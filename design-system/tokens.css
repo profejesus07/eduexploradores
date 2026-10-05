@@ -1,0 +1,37 @@
+/* Exploradores del Saber — tokens de diseño (derivados del logotipo) */
+:root {
+  /* Marca */
+  --color-primary: #0A33AD;        /* azul real del escudo */
+  --color-primary-dark: #071F6B;   /* azul profundo: fondos de hero/footer */
+  --color-secondary: #FFCB02;      /* dorado del aro */
+  --color-on-secondary: #0B1640;
+  --color-science: #00A849;        /* verde del microscopio/hoja */
+  --color-science-dark: #007A38;   /* verde para texto/botones con texto blanco */
+  --color-sky: #1AB0F9;            /* celeste del libro y los átomos */
+  --color-sky-dark: #0B6FB8;       /* celeste para texto/botones con texto blanco */
+  --color-spark: #FB3042;          /* rojo del núcleo atómico: solo acentos */
+  --color-spark-dark: #D81F33;     /* rojo con texto blanco (errores/CTA) */
+
+  /* Neutros */
+  --color-background: #F5F8FF;
+  --color-card: #FFFFFF;
+  --color-foreground: #0B1640;
+  --color-muted-foreground: #475579;
+  --color-border: #D9E2F8;
+  --color-on-primary: #FFFFFF;
+  --color-ring: #1AB0F9;
+
+  /* Semánticos */
+  --color-success: var(--color-science-dark);
+  --color-info: var(--color-sky-dark);
+  --color-destructive: var(--color-spark-dark);
+
+  /* Tipografía */
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+
+  /* Forma */
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-card: 0 2px 0 rgb(10 51 173 / .08), 0 12px 24px -12px rgb(10 51 173 / .25);
+}
