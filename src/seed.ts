@@ -99,12 +99,15 @@ const pages = [
 
 const payload = await getPayload({ config })
 
+let created = 0
 for (const page of pages) {
   const exists = await payload.find({ collection: 'pages', where: { slug: { equals: page.slug } }, limit: 1, overrideAccess: true })
   if (exists.totalDocs) { console.log(`= ${page.slug} ya existe`); continue }
   await payload.create({ collection: 'pages', data: { ...page, _status: 'published' } as any })
+  created++
   console.log(`+ ${page.slug}`)
 }
-await payload.updateGlobal({ slug: 'site-settings', data: { email: 'exploradoresdelsaber@gmail.com', phone: '311 740 5949', enrollmentOpen: true } })
+// Solo en la primera carga: no pisar lo que el admin edite después
+if (created) await payload.updateGlobal({ slug: 'site-settings', data: { email: 'exploradoresdelsaber@gmail.com', phone: '311 740 5949', enrollmentOpen: true } })
 console.log('Listo.')
 process.exit(0)
