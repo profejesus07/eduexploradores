@@ -107,6 +107,15 @@ for (const page of pages) {
   created++
   console.log(`+ ${page.slug}`)
 }
+const hasTestimonials = (await payload.count({ collection: 'testimonials' })).totalDocs
+if (!hasTestimonials) {
+  for (const t of [
+    { name: 'Verónica Maestre', role: 'Madre de familia', text: 'Está muy contenta con el resultado; su hijo ha mejorado su rendimiento académico de una forma increíble.' },
+    { name: 'Pedro Gutierrez', role: 'Padre de familia', text: 'Recomienda la escuela; el personal está muy preparado y la atención a su hija ha sido excelente.' },
+    { name: 'Patricia López', role: 'Madre de familia', text: 'Gracias a Exploradores del Saber su hijo avanzó muy rápido en las áreas donde tenía dificultad; los recomienda.' },
+  ]) await payload.create({ collection: 'testimonials', data: t })
+  console.log('+ testimonios')
+}
 // Solo en la primera carga: no pisar lo que el admin edite después
 if (created) await payload.updateGlobal({ slug: 'site-settings', data: { email: 'exploradoresdelsaber@gmail.com', phone: '311 740 5949', enrollmentOpen: true } })
 console.log('Listo.')

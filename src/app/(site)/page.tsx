@@ -20,16 +20,14 @@ const audiences = [
   { icon: Users, title: 'Comunidad', text: 'Eventos y noticias para quienes nos acompañan.', href: '/entradas?categoria=comunidad' },
 ]
 
-const testimonials = [
-  { name: 'Verónica Maestre', role: 'Madre de familia', text: 'Está muy contenta con el resultado; su hijo ha mejorado su rendimiento académico de una forma increíble.' },
-  { name: 'Pedro Gutierrez', role: 'Padre de familia', text: 'Recomienda la escuela; el personal está muy preparado y la atención a su hija ha sido excelente.' },
-  { name: 'Patricia López', role: 'Madre de familia', text: 'Gracias a Exploradores del Saber su hijo avanzó muy rápido en las áreas donde tenía dificultad; los recomienda.' },
-]
-
 export default async function HomePage() {
   const payload = await getPayloadClient()
   const posts = await payload
     .find({ collection: 'posts', limit: 3, depth: 1, sort: '-publishedAt', overrideAccess: false })
+    .then((r) => r.docs)
+    .catch(() => [])
+  const testimonials = await payload
+    .find({ collection: 'testimonials', limit: 6, overrideAccess: false, sort: 'createdAt' })
     .then((r) => r.docs)
     .catch(() => [])
 
@@ -165,12 +163,13 @@ export default async function HomePage() {
       )}
 
       {/* TESTIMONIOS */}
+      {testimonials.length > 0 && (
       <section className="bg-primary-dark py-20 text-white" aria-labelledby="testimonios">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 id="testimonios" className="text-4xl font-extrabold sm:text-5xl">Familias que <span className="text-secondary">confían</span> en nosotros</h2>
           <ul className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
-              <li key={t.name} className="rounded-3xl bg-white/10 p-7">
+              <li key={t.id} className="rounded-3xl bg-white/10 p-7">
                 <Quote aria-hidden className="text-secondary" />
                 <blockquote className="mt-3 text-lg">{t.text}</blockquote>
                 <p className="mt-4 font-display text-lg font-bold text-secondary">{t.name}</p>
@@ -180,6 +179,7 @@ export default async function HomePage() {
           </ul>
         </div>
       </section>
+      )}
     </>
   )
 }

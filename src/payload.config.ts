@@ -12,6 +12,7 @@ import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Popups } from '@/collections/Popups'
 import { Posts } from '@/collections/Posts'
+import { Testimonials } from '@/collections/Testimonials'
 import { Users } from '@/collections/Users'
 import { SiteSettings } from '@/globals/SiteSettings'
 import { richEditor } from '@/lib/editor'
@@ -25,7 +26,7 @@ export default buildConfig({
     meta: { titleSuffix: ' — Exploradores del Saber' },
   },
   i18n: { supportedLanguages: { es }, fallbackLanguage: 'es' },
-  collections: [Pages, Posts, Popups, Media, Users],
+  collections: [Pages, Posts, Popups, Testimonials, Media, Users],
   globals: [SiteSettings],
   editor: richEditor,
   secret: process.env.PAYLOAD_SECRET || '',
