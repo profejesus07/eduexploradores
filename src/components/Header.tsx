@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import logo from '@/assets/logo.webp'
 import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import { getSettings } from '@/lib/settings'
@@ -20,7 +21,7 @@ export default async function Header() {
     <header className="sticky top-0 z-50 border-b-4 border-secondary bg-primary-dark text-white shadow-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
         <Link href="/" className="flex items-center gap-3" aria-label="Exploradores del Saber, inicio">
-          <Image src="/logo.webp" alt="" width={52} height={52} className="rounded-full bg-white" priority />
+          <Image src={logo} alt="" width={52} height={52} className="rounded-full bg-white" priority />
           <span className="font-display text-xl font-bold leading-none">
             Exploradores
             <span className="block text-sm font-semibold text-secondary">del Saber</span>

@@ -107,6 +107,26 @@ for (const page of pages) {
   created++
   console.log(`+ ${page.slug}`)
 }
+if (!(await payload.count({ collection: 'posts' })).totalDocs) {
+  await payload.create({
+    collection: 'posts',
+    data: {
+      title: 'Inscripciones abiertas en Exploradores del Saber',
+      excerpt: 'Conoce nuestros niveles de preescolar, el refuerzo escolar y cómo solicitar un cupo para tu hijo.',
+      category: 'familias',
+      publishedAt: new Date().toISOString(),
+      _status: 'published',
+      content: doc(
+        p('En Exploradores del Saber formamos niños curiosos, autónomos y comprometidos con el cuidado del mundo que los rodea, a través de la exploración, el juego y la experiencia.'),
+        h('h2', 'Nuestros servicios'),
+        list(['Educación preescolar: Párvulos, Pre-Jardín, Jardín y Transición.', 'Apoyo y refuerzos escolares personalizados.']),
+        block('callout', { tone: 'gold', title: '¿Cómo solicitar un cupo?', text: 'Agenda una visita guiada, conversa con la dirección y presenta la documentación de matrícula.' }),
+        block('button', { label: 'Ver requisitos de matrícula', url: '/requisitos', style: 'primary' }),
+      ),
+    } as any,
+  })
+  console.log('+ entrada de bienvenida')
+}
 const hasTestimonials = (await payload.count({ collection: 'testimonials' })).totalDocs
 if (!hasTestimonials) {
   for (const t of [

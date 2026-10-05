@@ -2,6 +2,7 @@
 # Genera el sitio público como HTML estático en ./out (para GitHub Pages).
 # Requiere: BASE_PATH (ej. /eduexploradores). Modifica el árbol de trabajo: úsalo solo en CI o en una copia.
 set -euo pipefail
+[ "${CI:-}" = "true" ] || { echo 'Este script modifica el código fuente: ejecútalo solo en CI (CI=true) o en una copia desechable.' >&2; exit 1; }
 export STATIC_EXPORT=1
 export BASE_PATH="${BASE_PATH:-}"
 

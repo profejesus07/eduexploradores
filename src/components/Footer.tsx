@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import logo from '@/assets/logo.webp'
 import Link from 'next/link'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { nav } from '@/components/Header'
@@ -15,7 +16,7 @@ export default async function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
-            <Image src="/logo.webp" alt="" width={64} height={64} className="rounded-full bg-white" />
+            <Image src={logo} alt="" width={64} height={64} className="rounded-full bg-white" />
             <p className="font-display text-2xl font-bold leading-tight">Exploradores<br />del Saber</p>
           </div>
           <p className="mt-4 max-w-xs text-white/80">Enfoque constructivista que coloca al niño en el centro del aprendizaje.</p>

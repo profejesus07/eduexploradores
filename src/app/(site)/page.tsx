@@ -1,8 +1,10 @@
 import { ArrowRight, BookOpen, Compass, GraduationCap, HeartHandshake, Leaf, Puzzle, Quote, Users } from 'lucide-react'
 import Image from 'next/image'
+import logo from '@/assets/logo.webp'
 import Link from 'next/link'
 import PostCard from '@/components/PostCard'
 import { getPayloadClient } from '@/lib/payload'
+
 
 export const dynamic = 'force-dynamic'
 
@@ -57,7 +59,7 @@ export default async function HomePage() {
           </div>
           <div className="mx-auto w-full max-w-sm">
             <div className="rounded-full border-[10px] border-secondary bg-white p-2 shadow-2xl">
-              <Image src="/logo.webp" alt="Escudo de Exploradores del Saber: átomo, microscopio y libro abierto" width={520} height={520} priority className="rounded-full" />
+              <Image src={logo} alt="Escudo de Exploradores del Saber: átomo, microscopio y libro abierto" width={520} height={520} priority className="rounded-full" />
             </div>
           </div>
         </div>
