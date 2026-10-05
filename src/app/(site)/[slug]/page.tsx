@@ -4,6 +4,11 @@ import RichText from '@/components/RichText'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
+export async function generateStaticParams() {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({ collection: 'pages', limit: 200, depth: 0, pagination: false, overrideAccess: false })
+  return docs.flatMap((d) => (d.slug ? [{ slug: d.slug }] : []))
+}
 type Props = { params: Promise<{ slug: string }> }
 
 async function getPage(slug: string) {

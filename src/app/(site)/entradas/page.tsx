@@ -1,23 +1,14 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import PostCard, { categoryLabel } from '@/components/PostCard'
+import { Suspense } from 'react'
+import PostsExplorer from '@/components/PostsExplorer'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: 'Noticias y entradas' }
 
-export default async function PostsPage({ searchParams }: { searchParams: Promise<{ categoria?: string }> }) {
-  const { categoria } = await searchParams
+export default async function PostsPage() {
   const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'posts',
-    depth: 1,
-    limit: 24,
-    sort: '-publishedAt',
-    overrideAccess: false,
-    where: categoria && categoria in categoryLabel ? { category: { equals: categoria } } : undefined,
-  })
-  const filters = [['', 'Todas'], ...Object.entries(categoryLabel)]
+  const { docs } = await payload.find({ collection: 'posts', depth: 1, limit: 100, sort: '-publishedAt', overrideAccess: false })
   return (
     <>
       <header className="bg-primary-dark text-white">
@@ -27,21 +18,9 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
         </div>
         <div className="h-2 bg-gradient-to-r from-secondary via-sky to-science" />
       </header>
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <nav aria-label="Filtrar por categoría" className="flex flex-wrap gap-2">
-          {filters.map(([v, l]) => (
-            <Link key={v} href={v ? `/entradas?categoria=${v}` : '/entradas'} aria-current={(categoria ?? '') === v ? 'page' : undefined}
-              className="rounded-full border-2 border-primary px-4 py-2 font-semibold text-primary aria-[current=page]:bg-primary aria-[current=page]:text-white">
-              {l}
-            </Link>
-          ))}
-        </nav>
-        {docs.length ? (
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{docs.map((p) => <PostCard key={p.id} post={p} />)}</div>
-        ) : (
-          <p className="mt-10 text-lg text-muted-foreground">Aún no hay entradas publicadas en esta categoría.</p>
-        )}
-      </div>
+      <Suspense>
+        <PostsExplorer posts={docs} />
+      </Suspense>
     </>
   )
 }
