@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Baloo_2, Nunito } from 'next/font/google'
+import { Atkinson_Hyperlegible, Crimson_Pro } from 'next/font/google'
 import type { ReactNode } from 'react'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import PopupLoader from '@/components/PopupLoader'
 import './globals.css'
 
-const baloo = Baloo_2({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-baloo', display: 'swap' })
-const nunito = Nunito({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-nunito', display: 'swap' })
+const crimson = Crimson_Pro({ subsets: ['latin'], style: ['normal', 'italic'], weight: ['400', '500', '600', '700'], variable: '--font-crimson', display: 'swap' })
+const atkinson = Atkinson_Hyperlegible({ subsets: ['latin'], style: ['normal', 'italic'], weight: ['400', '700'], variable: '--font-atkinson', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es" className={`${baloo.variable} ${nunito.variable}`}>
+    <html lang="es" className={`${crimson.variable} ${atkinson.variable}`}>
       <body>
-        <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-secondary focus:px-4 focus:py-2 focus:text-on-secondary">
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-primary">
           Saltar al contenido
         </a>
         <Header />

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import PageHeader from '@/components/PageHeader'
 import PostsExplorer from '@/components/PostsExplorer'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -11,13 +12,7 @@ export default async function PostsPage() {
   const { docs } = await payload.find({ collection: 'posts', depth: 1, limit: 100, sort: '-publishedAt', overrideAccess: false })
   return (
     <>
-      <header className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h1 className="text-4xl font-extrabold sm:text-6xl">Noticias de la comunidad</h1>
-          <p className="mt-3 text-lg text-white/85">Novedades para familias, docentes, estudiantes y comunidad.</p>
-        </div>
-        <div className="h-2 bg-gradient-to-r from-secondary via-sky to-science" />
-      </header>
+      <PageHeader title="Noticias de la comunidad" subtitle="Novedades para familias, docentes, estudiantes y comunidad." eyebrow="Actualidad" />
       <Suspense>
         <PostsExplorer posts={docs} />
       </Suspense>

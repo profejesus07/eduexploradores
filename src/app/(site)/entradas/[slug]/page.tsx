@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { categoryLabel } from '@/components/PostCard'
+import PageHeader from '@/components/PageHeader'
 import RichText from '@/components/RichText'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -30,19 +31,12 @@ export default async function PostPage({ params }: Props) {
   const cover = typeof post.coverImage === 'object' ? post.coverImage : null
   return (
     <>
-      <header className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
-          <Link href={`/entradas?categoria=${post.category}`} className="inline-block rounded-full bg-secondary px-4 py-1 text-sm font-bold text-on-secondary">{categoryLabel[post.category ?? 'noticias']}</Link>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">{post.title}</h1>
-          {post.publishedAt && <p className="mt-3 text-white/75">{new Date(post.publishedAt).toLocaleDateString('es-CO', { dateStyle: 'long' })}</p>}
-        </div>
-        <div className="h-2 bg-gradient-to-r from-secondary via-sky to-science" />
-      </header>
-      <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-        {cover?.url && <img src={cover.sizes?.hero?.url || cover.url} alt={cover.alt} className="mb-10 w-full rounded-3xl object-cover shadow-card" />}
-        <p className="mb-8 text-xl font-semibold text-primary-dark">{post.excerpt}</p>
+      <PageHeader title={post.title} trail={{ href: `/entradas?categoria=${post.category}`, label: categoryLabel[post.category ?? 'noticias'] }} subtitle={post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-CO', { dateStyle: 'long' }) : undefined} />
+      <article className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+        {cover?.url && <img src={cover.sizes?.hero?.url || cover.url} alt={cover.alt} className="mb-12 w-full object-cover shadow-[var(--shadow-card)]" />}
+        <p className="mb-10 max-w-2xl font-display text-3xl italic leading-snug text-primary">{post.excerpt}</p>
         <RichText data={post.content as any} />
-        <Link href="/entradas" className="mt-12 inline-block font-display font-bold text-primary underline">← Volver a las noticias</Link>
+        <Link href="/entradas" className="link-underline mt-14 inline-block font-bold tracking-wide text-primary">← Volver a las noticias</Link>
       </article>
     </>
   )

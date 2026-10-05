@@ -1,29 +1,35 @@
 # Exploradores del Saber — Sistema de diseño (maestro)
 
-Lema: *Crecer, Explorar y Aprender*. Tokens en `design-system/tokens.css`.
+Dirección: **editorial-académica**, sobria y sofisticada. Lema: *Crecer, Explorar y Aprender*. Tokens en `design-system/tokens.css`.
 
-## Análisis del logotipo
-| Elemento | Color muestreado | Rol en la web |
+## Paleta (derivada del logotipo, en tonos sobrios)
+| Rol | Valor | Origen en el logotipo |
 |---|---|---|
-| Disco exterior | Azul real `#0A33AD` | Primario: cabecera, botones, enlaces |
-| Aro y textos del lema | Dorado `#FFCB02` | Secundario: destacados, insignias, subrayados |
-| Microscopio / hoja | Verde `#00A849` | Ciencias naturales, éxito |
-| Libro / órbitas | Celeste `#1AB0F9` | Información, foco (`--color-ring`), ilustraciones |
-| Núcleo del átomo | Rojo `#FB3042` | Acento mínimo, alertas |
-| Fondo interior | Blanco / `#F5F8FF` | Superficies |
+| Azul institucional `primary` | `#0E2A63` | Disco exterior |
+| Azul profundo `primary-dark` | `#091B45` | Hero y pie |
+| Dorado antiguo `secondary` | `#A97F24` | Aro y lema (solo filetes y detalles) |
+| Dorado suave `gold-soft` | `#D8C48A` | Detalles sobre fondo oscuro |
+| Dorado texto `gold-text` | `#7A5A12` | Texto pequeño sobre claro (6.0:1) |
+| Verde bosque `science` | `#2E6B57` | Microscopio / hoja |
+| Azul acero `sky` | `#3E6E9C` | Libro / órbitas |
+| Vino `spark` | `#8E3B46` | Núcleo atómico |
+| Marfil `background` / `paper` | `#FAF8F3` / `#F3EFE4` | Superficies |
+| Tinta `foreground` | `#141C2E` | Texto (16:1 sobre marfil) |
 
-## Contraste (WCAG, medido)
-- Texto `#0B1640` sobre fondo `#F5F8FF`: 16.4:1 ✔
-- Blanco sobre azul primario: 10.1:1 ✔ · Dorado sobre azul profundo: 9.7:1 ✔
-- Texto oscuro sobre dorado: 11.5:1 ✔ · Texto oscuro sobre celeste: 7.2:1 ✔
-- Blanco sobre verde `#00A849`: 3.1:1 ✘ → usar `science-dark` (5.5:1) o texto oscuro (5.6:1)
-- Blanco sobre celeste `#1AB0F9`: 2.4:1 ✘ → usar `sky-dark` (5.3:1) o texto oscuro
-- Blanco sobre rojo `#FB3042`: 3.8:1 ✘ → usar `spark-dark` (5.0:1)
-- Dorado nunca como texto sobre fondo claro.
+Los colores saturados del logotipo quedan solo en el escudo; la interfaz usa tonos apagados. El dorado nunca va como texto pequeño ni como relleno de botones.
 
-## Reglas
-- Proporción: ~60 % neutros, 25 % azul, 10 % dorado, 5 % verde/celeste/rojo.
-- Tipografía: títulos Baloo 2 (700), cuerpo Nunito 16px/1.6 (Google Fonts).
-- Estilo: amigable y redondeado (radios 16–24px, sombras suaves), iconos SVG (Lucide), sin emojis.
-- Foco visible con `--color-ring`; respetar `prefers-reduced-motion`; objetivos táctiles ≥ 44px.
-- Color nunca como único indicador de significado.
+## Tipografía
+- Títulos: **Crimson Pro** (600, cursiva para énfasis). Texto: **Atkinson Hyperlegible** 17px / 1.7.
+- Pequeñas mayúsculas espaciadas (`.eyebrow`) para etiquetas de sección.
+
+## Forma y composición
+- Esquinas casi rectas, filetes de 1px, mucho aire, rejillas tipo revista; círculos finos que evocan el escudo.
+- Botones: `.btn-primary`, `.btn-light`, `.btn-outline`, `.btn-ghost-light` (sin píldoras).
+- Colores por nivel (filete superior): Párvulos azul · Pre-Jardín vino · Jardín dorado · Transición verde.
+
+## Movimiento (sutil)
+- Entrada escalonada del hero (`.rise`), aparición al hacer scroll (`<Reveal>`), subrayado que crece en enlaces, elevación de 3px en tarjetas, flotación lenta del escudo.
+- Todo se desactiva con `prefers-reduced-motion`; sin JavaScript el contenido se ve completo.
+
+## Accesibilidad
+Contraste ≥ 4.5:1 en texto, foco visible, objetivos táctiles ≥ 44px, color nunca como único indicador.

@@ -3,14 +3,14 @@ import { RichText as ConvertRichText, LinkJSXConverter, type JSXConvertersFuncti
 import VideoEmbed from '@/components/VideoEmbed'
 
 const buttonStyles: Record<string, string> = {
-  primary: 'bg-primary text-white',
-  gold: 'bg-secondary text-on-secondary',
-  outline: 'border-2 border-primary text-primary',
+  primary: 'btn btn-primary',
+  gold: 'btn border-secondary text-gold-text hover:bg-secondary hover:text-white',
+  outline: 'btn btn-outline',
 }
 const calloutStyles: Record<string, string> = {
-  info: 'border-sky-dark bg-sky/10',
-  gold: 'border-secondary bg-secondary/15',
-  green: 'border-science-dark bg-science/10',
+  info: 'border-sky',
+  gold: 'border-secondary',
+  green: 'border-science',
 }
 
 const internalDocToHref = ({ linkNode }: any) => {
@@ -30,16 +30,15 @@ const converters: JSXConvertersFunction<any> = ({ defaultConverters }) => ({
         <a
           href={node.fields.url}
           {...(node.fields.newTab ? { target: '_blank', rel: 'noreferrer' } : {})}
-          className={`inline-block rounded-full px-6 py-3 font-display font-bold no-underline ${buttonStyles[node.fields.style] ?? buttonStyles.primary}`}
-          style={{ textDecoration: 'none', color: undefined }}
+          className={`${buttonStyles[node.fields.style] ?? buttonStyles.primary} !no-underline`}
         >
           {node.fields.label}
         </a>
       </p>
     ),
     callout: ({ node }: any) => (
-      <aside className={`rounded-2xl border-l-8 p-5 ${calloutStyles[node.fields.tone] ?? calloutStyles.info}`}>
-        {node.fields.title && <p className="font-display text-lg font-bold">{node.fields.title}</p>}
+      <aside className={`border-l-2 bg-paper p-6 ${calloutStyles[node.fields.tone] ?? calloutStyles.info}`}>
+        {node.fields.title && <p className="font-display text-2xl text-primary">{node.fields.title}</p>}
         <p>{node.fields.text}</p>
       </aside>
     ),

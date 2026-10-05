@@ -1,33 +1,33 @@
-/* Exploradores del Saber — tokens de diseño (derivados del logotipo) */
+/* Exploradores del Saber — tokens de diseño · dirección editorial-académica
+   Derivados del logotipo (azul, dorado, verde, celeste, rojo) en tonos sobrios. */
 @theme {
   /* Marca */
-  --color-primary: #0A33AD;        /* azul real del escudo */
-  --color-primary-dark: #071F6B;   /* azul profundo: fondos de hero/footer */
-  --color-secondary: #FFCB02;      /* dorado del aro */
-  --color-on-secondary: #0B1640;
-  --color-science: #00A849;        /* verde del microscopio/hoja */
-  --color-science-dark: #007A38;   /* verde para texto/botones con texto blanco */
-  --color-sky: #1AB0F9;            /* celeste del libro y los átomos */
-  --color-sky-dark: #0B6FB8;       /* celeste para texto/botones con texto blanco */
-  --color-spark: #FB3042;          /* rojo del núcleo atómico: solo acentos */
-  --color-spark-dark: #D81F33;     /* rojo con texto blanco (errores/CTA) */
+  --color-primary: #0E2A63;        /* azul institucional */
+  --color-primary-dark: #091B45;   /* azul profundo: hero, pie */
+  --color-secondary: #A97F24;      /* dorado antiguo: filetes y detalles (no para texto pequeño) */
+  --color-gold-soft: #D8C48A;      /* dorado suave sobre fondos oscuros */
+  --color-gold-text: #7A5A12;      /* dorado para texto sobre fondo claro */
+  --color-science: #2E6B57;        /* verde bosque */
+  --color-science-dark: #2E6B57;
+  --color-sky: #3E6E9C;            /* azul acero */
+  --color-sky-dark: #3E6E9C;
+  --color-spark: #8E3B46;          /* vino */
+  --color-spark-dark: #8E3B46;
 
-  /* Neutros */
-  --color-background: #F5F8FF;
+  /* Superficies y texto */
+  --color-background: #FAF8F3;     /* marfil */
+  --color-paper: #F3EFE4;          /* marfil oscuro: secciones alternas */
   --color-card: #FFFFFF;
-  --color-foreground: #0B1640;
-  --color-muted-foreground: #475579;
-  --color-border: #D9E2F8;
+  --color-foreground: #141C2E;
+  --color-muted-foreground: #5A6275;
+  --color-border: #E4DECF;
   --color-on-primary: #FFFFFF;
-  --color-ring: #1AB0F9;
+  --color-ring: #3E6E9C;
 
   /* Semánticos */
-  --color-success: var(--color-science-dark);
-  --color-info: var(--color-sky-dark);
-  --color-destructive: var(--color-spark-dark);
+  --color-success: var(--color-science);
+  --color-info: var(--color-sky);
+  --color-destructive: var(--color-spark);
 
-
-
-
-  --shadow-card: 0 2px 0 rgb(10 51 173 / .08), 0 12px 24px -12px rgb(10 51 173 / .25);
+  --shadow-card: 0 1px 2px rgb(9 27 69 / .06), 0 10px 28px -14px rgb(9 27 69 / .22);
 }

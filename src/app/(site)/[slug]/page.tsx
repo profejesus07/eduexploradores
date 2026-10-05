@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import PageHeader from '@/components/PageHeader'
 import RichText from '@/components/RichText'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -28,15 +29,9 @@ export default async function Page({ params }: Props) {
   const hero = typeof page.heroImage === 'object' ? page.heroImage : null
   return (
     <>
-      <header className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h1 className="text-4xl font-extrabold sm:text-6xl">{page.title}</h1>
-          {page.subtitle && <p className="mt-3 max-w-2xl text-lg text-white/85">{page.subtitle}</p>}
-        </div>
-        <div className="h-2 bg-gradient-to-r from-secondary via-sky to-science" />
-      </header>
-      <article className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        {hero?.url && <img src={hero.sizes?.hero?.url || hero.url} alt={hero.alt} className="mb-10 max-h-[28rem] w-full rounded-3xl object-cover shadow-card" />}
+      <PageHeader title={page.title} subtitle={page.subtitle} eyebrow="Exploradores del Saber" />
+      <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        {hero?.url && <img src={hero.sizes?.hero?.url || hero.url} alt={hero.alt} className="mb-12 max-h-[28rem] w-full object-cover shadow-[var(--shadow-card)]" />}
         <RichText data={page.content as any} />
       </article>
     </>

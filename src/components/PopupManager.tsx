@@ -70,18 +70,18 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
       aria-labelledby="popup-title"
       onClose={close}
       onClick={(e) => e.target === ref.current && close()}
-      className="m-auto w-[min(92vw,34rem)] max-h-[90vh] overflow-y-auto rounded-3xl border-4 border-secondary bg-white p-0 text-foreground shadow-2xl backdrop:bg-primary-dark/70"
+      className="popup m-auto w-[min(92vw,34rem)] max-h-[90vh] overflow-y-auto border-t-4 border-secondary bg-background p-0 text-foreground shadow-2xl backdrop:bg-primary-dark/70 backdrop:backdrop-blur-[2px]"
     >
-      <button onClick={close} aria-label="Cerrar" className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-primary shadow">
+      <button onClick={close} aria-label="Cerrar" className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center bg-white/95 text-primary shadow transition-transform hover:rotate-90">
         <X aria-hidden />
       </button>
       {current.imageUrl && <img src={current.imageUrl} alt={current.imageAlt || ''} className="max-h-72 w-full object-cover" />}
-      <div className="space-y-4 p-6">
-        <h2 id="popup-title" className="font-display text-3xl font-bold text-primary">{current.title}</h2>
+      <div className="space-y-5 p-8">
+        <h2 id="popup-title" className="text-4xl text-primary">{current.title}</h2>
         {current.body && <RichText data={current.body} />}
         {current.videoUrl && <VideoEmbed url={current.videoUrl} />}
         {current.ctaUrl && (
-          <a href={current.ctaUrl} onClick={close} className="inline-block rounded-full bg-secondary px-6 py-3 font-display font-bold text-on-secondary">
+          <a href={current.ctaUrl} onClick={close} className="btn btn-primary">
             {current.ctaLabel || 'Conocer más'}
           </a>
         )}
