@@ -1,3 +1,9 @@
 node_modules
 __pycache__/
 *.pyc
+.next
+.env
+data/*.db*
+media
+next-env.d.ts
+tsconfig.tsbuildinfo

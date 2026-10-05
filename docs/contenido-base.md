@@ -29,7 +29,7 @@ Inicio · Nosotros · Servicios · Requisitos · FAQs · Contacto (+ Entradas/No
 1. Registro Civil de Nacimiento o PPT del estudiante (copia legible).
 2. Cédula de los padres o acudientes ampliada al 150 %.
 3. Carné de vacunación actualizado.
-4. Certificado de afiliación vigente al sistema de salud (la web dice "FOSYGA"; hoy ADRES).
+4. Certificado de afiliación vigente al sistema de salud (la web dice "FOSYGA"; usar ADRES).
 5. Carné de crecimiento y desarrollo (preescolar y primaria).
 6. Fotografía digital reciente, fondo blanco, 3x4 cm.
 7. Certificado médico de salud general.
@@ -45,11 +45,10 @@ Inicio · Nosotros · Servicios · Requisitos · FAQs · Contacto (+ Entradas/No
 - **Horarios Preescolar (lunes a viernes)**: Párvulos y Pre-Jardín 7:45 a.m.–12:00 m.; Jardín y Transición 7:15 a.m.–12:15 p.m.
 
 ## Contacto
-Dirección: Urb. Casa Carmelo Etapa II, Manzana C Casa 1 (Valledupar) · Celular 311 740 5949 · Correo (ver pendientes).
+Dirección: Urb. Casa Carmelo Etapa II, Manzana C Casa 1 (Valledupar) · Celular 311 740 5949 · Correo `exploradoresdelsaber@gmail.com` (confirmado).
 Pie: "Exploradores del Saber" — enfoque constructivista que coloca al niño en el centro del aprendizaje. Redes: compartir en Facebook.
 
 ## Pendientes por confirmar con el cliente
-- Correo: `exploradoresdelsaber@gmail.com` (FAQs) vs `edu.exploradoresdelsaber@gmail.com` (Contacto).
 - ¿Se ofrece Básica Primaria 1°–5°? FAQs sí; Inicio y Servicios solo Preescolar y Refuerzo.
 - ¿Refuerzos y campamentos de verano están activos o "en organización"?
 - Testimonios: confirmar permiso de uso de nombres.

@@ -1,5 +1,5 @@
 /* Exploradores del Saber — tokens de diseño (derivados del logotipo) */
-:root {
+@theme {
   /* Marca */
   --color-primary: #0A33AD;        /* azul real del escudo */
   --color-primary-dark: #071F6B;   /* azul profundo: fondos de hero/footer */
@@ -26,12 +26,8 @@
   --color-info: var(--color-sky-dark);
   --color-destructive: var(--color-spark-dark);
 
-  /* Tipografía */
-  --font-display: "Baloo 2", system-ui, sans-serif;
-  --font-body: "Nunito", system-ui, sans-serif;
 
-  /* Forma */
-  --radius-md: 16px;
-  --radius-lg: 24px;
+
+
   --shadow-card: 0 2px 0 rgb(10 51 173 / .08), 0 12px 24px -12px rgb(10 51 173 / .25);
 }
