@@ -15,6 +15,7 @@
   a, button, summary { cursor: pointer; }
 }
 
+@layer components {
 /* ——— Utilidades de estilo editorial ——— */
 .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gold-text); display: inline-flex; align-items: center; gap: .75rem; }
 .eyebrow::before { content: ""; width: 2.25rem; height: 1px; background: currentColor; }
@@ -78,3 +79,4 @@
 .prose-edu table { width: 100%; border-collapse: collapse; }
 .prose-edu th, .prose-edu td { border-bottom: 1px solid var(--color-border); padding: .6em .75em; text-align: left; }
 .prose-edu th { font-family: var(--font-display); color: var(--color-primary); }
+}
