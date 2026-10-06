@@ -107,8 +107,11 @@ export default async function HomePage() {
         </ul>
       </section>
 
+      {/* GALERÍA (se activa desde el admin) */}
+      <HomeGallery />
+
       {/* NIVELES */}
-      <section className="bg-paper py-24" aria-labelledby="niveles">
+      <section className="py-24" aria-labelledby="niveles">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
             <p className="eyebrow">Escoge tu servicio</p>
@@ -122,7 +125,8 @@ export default async function HomePage() {
       </section>
 
       {/* ENFOQUE */}
-      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6" aria-labelledby="enfoque">
+      <section className="bg-paper" aria-labelledby="enfoque">
+        <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <Reveal>
           <p className="eyebrow">Nuestro enfoque</p>
           <h2 id="enfoque" className="mt-4 max-w-3xl text-4xl text-primary sm:text-6xl">Aprender explorando</h2>
@@ -148,10 +152,8 @@ export default async function HomePage() {
           </Reveal>
         </div>
         <Link href="/nosotros" className="link-underline mt-8 inline-flex items-center gap-2 font-bold tracking-wide text-primary">Conocer nuestro horizonte institucional <ArrowRight aria-hidden size={16} /></Link>
+        </div>
       </section>
-
-      {/* GALERÍA (se activa desde el admin) */}
-      <HomeGallery />
 
       {/* ADMISIÓN */}
       <section className="on-dark relative overflow-hidden bg-primary text-white" aria-labelledby="admision">
