@@ -44,6 +44,8 @@ export default buildConfig({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
       collections: { media: { disablePayloadAccessControl: true } },
       clientUploads: true,
+      // Inserta siempre los campos del plugin (p. ej. _objectKey) para que el esquema sea igual con o sin token.
+      alwaysInsertFields: true,
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],

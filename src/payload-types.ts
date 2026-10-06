@@ -176,6 +176,8 @@ export interface Media {
    * Describe la imagen para personas con lectores de pantalla. Si lo dejas vacío se usa el nombre del archivo.
    */
   alt?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -281,9 +283,16 @@ export interface Level {
  */
 export interface Popup {
   id: number;
+  /**
+   * Identifica el popup en el panel. Solo se muestra al público si marcas "Mostrar el título en el popup".
+   */
   title: string;
+  showTitle?: boolean | null;
   active?: boolean | null;
   image?: (number | null) | Media;
+  /**
+   * Opcional. Si lo dejas vacío no se muestra ningún texto.
+   */
   body?: {
     root: {
       type: string;
@@ -300,7 +309,13 @@ export interface Popup {
     [k: string]: unknown;
   } | null;
   videoUrl?: string | null;
+  /**
+   * El botón solo aparece si escribes el texto y el enlace.
+   */
   ctaLabel?: string | null;
+  /**
+   * Déjalo vacío si no quieres botón.
+   */
   ctaUrl?: string | null;
   showOn?: ('home' | 'all') | null;
   frequency?: ('session' | 'day' | 'always') | null;
@@ -506,6 +521,7 @@ export interface LevelsSelect<T extends boolean = true> {
  */
 export interface PopupsSelect<T extends boolean = true> {
   title?: T;
+  showTitle?: T;
   active?: T;
   image?: T;
   body?: T;
@@ -538,6 +554,8 @@ export interface TestimonialsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
