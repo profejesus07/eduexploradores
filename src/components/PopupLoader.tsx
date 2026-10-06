@@ -1,3 +1,4 @@
+import { mediaSrc } from '@/lib/media'
 import PopupManager, { type PopupData } from '@/components/PopupManager'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -23,7 +24,7 @@ export default async function PopupLoader() {
       return {
         id: d.id,
         title: d.title,
-        imageUrl: img?.url,
+        imageUrl: mediaSrc(img, 'card'),
         imageAlt: img?.alt,
         body: d.body,
         videoUrl: d.videoUrl,

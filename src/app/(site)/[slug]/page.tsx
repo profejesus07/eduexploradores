@@ -1,3 +1,4 @@
+import { mediaSrc } from '@/lib/media'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import PageHeader from '@/components/PageHeader'
@@ -31,7 +32,7 @@ export default async function Page({ params }: Props) {
     <>
       <PageHeader title={page.title} subtitle={page.subtitle} eyebrow="Exploradores del Saber" />
       <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        {hero?.url && <img src={hero.sizes?.hero?.url || hero.url} alt={hero.alt ?? ''} className="mb-12 max-h-[28rem] w-full object-cover shadow-[var(--shadow-card)]" />}
+        {hero?.url && <img src={mediaSrc(hero, 'hero')} alt={hero.alt ?? ''} className="mb-12 max-h-[28rem] w-full object-cover shadow-[var(--shadow-card)]" />}
         <RichText data={page.content as any} />
       </article>
     </>

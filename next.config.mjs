@@ -5,7 +5,7 @@ const isStatic = process.env.STATIC_EXPORT === '1'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/**' }], ...(isStatic && { unoptimized: true }) },
+  images: { remotePatterns: [{ protocol: 'https', hostname: '*.public.blob.vercel-storage.com' }], localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/**' }], ...(isStatic && { unoptimized: true }) },
   ...(isStatic && { output: 'export', trailingSlash: true, basePath: process.env.BASE_PATH || '' }),
 }
 

@@ -1,3 +1,4 @@
+import { mediaSrc } from '@/lib/media'
 import { ArrowRight, Compass, GraduationCap, HeartHandshake, Leaf, Puzzle, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -39,7 +40,7 @@ export default async function HomePage() {
     return {
       id: d.id, title: d.title, badge: d.badge, subtitle: d.subtitle, summary: d.summary,
       highlights: (d.highlights ?? []).map((h) => h.text), schedule: d.schedule, folder: d.folder,
-      imageUrl: img?.sizes?.card?.url || img?.url, imageAlt: img?.alt,
+      imageUrl: mediaSrc(img, 'card'), imageAlt: img?.alt,
     }
   }
   const preescolar = levelDocs.filter((d) => d.stage === 'preescolar').map(toSlide)

@@ -1,3 +1,4 @@
+import { mediaSrc } from '@/lib/media'
 import Link from 'next/link'
 import type { Post } from '@/payload-types'
 
@@ -11,7 +12,7 @@ export default function PostCard({ post }: { post: Post }) {
       <Link href={`/entradas/${post.slug}`} className="flex h-full flex-col">
         <div className="overflow-hidden">
           {img?.url ? (
-            <img src={img.sizes?.card?.url || img.url} alt={img.alt ?? ''} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+            <img src={mediaSrc(img, 'card')} alt={img.alt ?? ''} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
           ) : (
             <div className="relative aspect-[4/3] bg-primary-dark" aria-hidden>
               <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold-soft/30" />

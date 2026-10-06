@@ -38,9 +38,12 @@ export default buildConfig({
     : sqliteAdapter({ client: { url: process.env.DATABASE_URL || 'file:./data/payload.db' } }),
   plugins: [
     // Imágenes en Vercel Blob cuando hay token; en local, en disco.
+    // clientUploads: el navegador sube directo a Blob (evita el límite de 4,5 MB de las funciones de Vercel).
+    // disablePayloadAccessControl: las imágenes se sirven por la CDN de Blob, no a través del servidor.
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-      collections: { media: true },
+      collections: { media: { disablePayloadAccessControl: true } },
+      clientUploads: true,
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],

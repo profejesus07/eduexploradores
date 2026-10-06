@@ -1,3 +1,4 @@
+import { mediaSrc } from '@/lib/media'
 import Gallery, { type GalleryItem } from '@/components/Gallery'
 import Reveal from '@/components/Reveal'
 import { demoImages } from '@/lib/galleryDemo'
@@ -15,8 +16,8 @@ export default async function HomeGallery() {
       id: it.id ?? i,
       caption: it.caption,
       detail: it.detail,
-      src: img?.url ? (img.sizes?.card?.url || img.url) : demo,
-      full: img?.url ? (img.sizes?.hero?.url || img.url) : demo,
+      src: img?.url ? mediaSrc(img, 'card')! : demo,
+      full: img?.url ? mediaSrc(img, 'hero')! : demo,
       alt: img ? (img.alt ?? it.caption) : `Imagen de demostración: ${it.caption}`,
       isDemo: !img,
     }
