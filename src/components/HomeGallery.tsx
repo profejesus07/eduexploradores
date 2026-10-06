@@ -17,7 +17,7 @@ export default async function HomeGallery() {
       detail: it.detail,
       src: img?.url ? (img.sizes?.card?.url || img.url) : demo,
       full: img?.url ? (img.sizes?.hero?.url || img.url) : demo,
-      alt: img ? img.alt : `Imagen de demostración: ${it.caption}`,
+      alt: img ? (img.alt ?? it.caption) : `Imagen de demostración: ${it.caption}`,
       isDemo: !img,
     }
   })

@@ -15,7 +15,24 @@ export const Media: CollectionConfig = {
     ],
     adminThumbnail: 'thumbnail',
   },
+  hooks: {
+    // El texto alternativo es opcional para el editor: si se deja vacío, se usa el nombre del archivo.
+    beforeValidate: [
+      ({ data, req }) => {
+        if (data && !data.alt) {
+          const name = String(data.filename ?? req.file?.name ?? '')
+          data.alt = name ? name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim() || 'Imagen' : 'Imagen'
+        }
+        return data
+      },
+    ],
+  },
   fields: [
-    { name: 'alt', label: 'Texto alternativo (descripción de la imagen)', type: 'text', required: true },
+    {
+      name: 'alt',
+      label: 'Texto alternativo (opcional)',
+      type: 'text',
+      admin: { description: 'Describe la imagen para personas con lectores de pantalla. Si lo dejas vacío se usa el nombre del archivo.' },
+    },
   ],
 }

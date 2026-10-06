@@ -33,7 +33,7 @@ export default async function PostPage({ params }: Props) {
     <>
       <PageHeader title={post.title} trail={{ href: `/entradas?categoria=${post.category}`, label: categoryLabel[post.category ?? 'noticias'] }} subtitle={post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-CO', { dateStyle: 'long' }) : undefined} />
       <article className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-        {cover?.url && <img src={cover.sizes?.hero?.url || cover.url} alt={cover.alt} className="mb-12 w-full object-cover shadow-[var(--shadow-card)]" />}
+        {cover?.url && <img src={cover.sizes?.hero?.url || cover.url} alt={cover.alt ?? ''} className="mb-12 w-full object-cover shadow-[var(--shadow-card)]" />}
         <p className="mb-10 max-w-2xl font-display text-3xl italic leading-snug text-primary">{post.excerpt}</p>
         <RichText data={post.content as any} />
         <Link href="/entradas" className="link-underline mt-14 inline-block font-bold tracking-wide text-primary">← Volver a las noticias</Link>

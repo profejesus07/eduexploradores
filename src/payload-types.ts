@@ -172,7 +172,10 @@ export interface Page {
  */
 export interface Media {
   id: number;
-  alt: string;
+  /**
+   * Describe la imagen para personas con lectores de pantalla. Si lo dejas vacío se usa el nombre del archivo.
+   */
+  alt?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
