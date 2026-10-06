@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: { default: 'Exploradores del Saber — Crecer, Explorar y Aprender', template: '%s · Exploradores del Saber' },
   description:
-    'Proyecto educativo en Valledupar: educación inicial constructivista, refuerzo escolar y formación integral para niños curiosos, autónomos y comprometidos con su entorno.',
+    'Proyecto educativo en Valledupar: educación inicial constructivista y formación integral para niños curiosos, autónomos y comprometidos con su entorno.',
 }
 
 export default function SiteLayout({ children }: { children: ReactNode }) {

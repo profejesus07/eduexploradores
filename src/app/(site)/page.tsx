@@ -4,7 +4,7 @@ import Link from 'next/link'
 import logo from '@/assets/logo.webp'
 import LevelSlider, { type LevelSlide } from '@/components/LevelSlider'
 import PostCard from '@/components/PostCard'
-import PrimariaBanner from '@/components/PrimariaBanner'
+import PrimariaCard from '@/components/PrimariaCard'
 import Reveal from '@/components/Reveal'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -79,7 +79,7 @@ export default async function HomePage() {
         </div>
         <div className="relative border-t border-white/10">
           <ul className="mx-auto grid max-w-6xl gap-px px-4 text-sm tracking-wide text-white/70 sm:grid-cols-3 sm:px-6">
-            {['Enfoque pedagógico constructivista', 'Inglés desde Preescolar', 'Visión institucional 2030'].map((t) => (
+            {['Enfoque pedagógico constructivista', 'Inglés desde Preescolar', 'Visión institucional 2035'].map((t) => (
               <li key={t} className="flex items-center gap-3 py-4"><span aria-hidden className="h-1 w-1 rotate-45 bg-gold-soft" />{t}</li>
             ))}
           </ul>
@@ -112,18 +112,11 @@ export default async function HomePage() {
           <Reveal>
             <p className="eyebrow">Escoge tu servicio</p>
             <h2 id="niveles" className="mt-4 max-w-2xl text-4xl text-primary sm:text-6xl">Un camino para cada etapa</h2>
-            <p className="mt-5 max-w-2xl text-xl text-muted-foreground">Programa completo para la primera infancia con enfoque lúdico y constructivista, acompañado de refuerzo escolar personalizado.</p>
+            <p className="mt-5 max-w-2xl text-xl text-muted-foreground">Programa completo para la primera infancia con enfoque lúdico y constructivista.</p>
           </Reveal>
           {preescolar.length > 0 && <LevelSlider kicker="Primera infancia" title="Preescolar" caption="Párvulos · Pre-Jardín · Jardín · Transición" slides={preescolar} badgeStyle="number" />}
-          {primaria.length === 1 && <PrimariaBanner data={primaria[0]} />}
+          {primaria.length === 1 && <PrimariaCard data={primaria[0]} />}
           {primaria.length > 1 && <LevelSlider kicker="Educación básica" title="Básica Primaria" caption="Grados 1° a 5°" slides={primaria} badgeStyle="grade" />}
-          <Reveal className="mt-16 flex flex-col items-start gap-5 border border-border bg-card p-8 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h3 className="text-3xl text-primary">Refuerzo escolar</h3>
-              <p className="mt-1 max-w-2xl text-muted-foreground">Acompañamiento personalizado para potenciar el aprendizaje, los hábitos de estudio y las competencias básicas.</p>
-            </div>
-            <Link href="/servicios" className="btn btn-outline shrink-0">Conocer más <ArrowRight aria-hidden size={18} className="arrow" /></Link>
-          </Reveal>
         </div>
       </section>
 
@@ -149,8 +142,8 @@ export default async function HomePage() {
             <p className="mt-5 font-display text-[1.7rem] leading-snug text-primary">Formar niños y niñas autónomos, empáticos y cooperativos, capaces de construir su propio aprendizaje mediante la exploración, el juego y la experiencia.</p>
           </Reveal>
           <Reveal delay={120} className="bg-card p-10">
-            <p className="eyebrow">Visión 2030</p>
-            <p className="mt-5 font-display text-[1.7rem] leading-snug text-primary">Ser una institución reconocida por promover el aprendizaje significativo y el desarrollo integral en educación inicial y primaria.</p>
+            <p className="eyebrow">Visión 2035</p>
+            <p className="mt-5 font-display text-[1.7rem] leading-snug text-primary">Proyectamos consolidarnos para el año 2035 como una institución reconocida por promover el aprendizaje significativo y el desarrollo integral de los niños y niñas en la educación inicial y primaria.</p>
           </Reveal>
         </div>
         <Link href="/nosotros" className="link-underline mt-8 inline-flex items-center gap-2 font-bold tracking-wide text-primary">Conocer nuestro horizonte institucional <ArrowRight aria-hidden size={16} /></Link>

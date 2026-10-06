@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu } from 'lucide-react'
+import MobileMenu from '@/components/MobileMenu'
 import logo from '@/assets/logo.webp'
 import { getSettings } from '@/lib/settings'
 
@@ -22,7 +22,7 @@ export default async function Header() {
     <header className="sticky top-0 z-50">
       <div className="hidden bg-primary-dark text-[.8rem] tracking-wide text-white/80 md:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-1.5">
-          <span>Educación inicial y refuerzo escolar · Valledupar</span>
+          <span>Educación inicial · Valledupar</span>
           <a href={`tel:+57${phone.replace(/\D/g, '')}`} className="link-underline hover:text-gold-soft">{phone}</a>
         </div>
       </div>
@@ -45,19 +45,7 @@ export default async function Header() {
             {open && <Link href="/requisitos" className="btn btn-primary !min-h-0 !px-5 !py-2.5">Inscripciones</Link>}
           </nav>
 
-          <details className="group relative lg:hidden">
-            <summary className="flex h-11 w-11 list-none items-center justify-center border border-border bg-white text-primary" aria-label="Abrir menú">
-              <Menu aria-hidden size={22} />
-            </summary>
-            <nav aria-label="Principal móvil" className="absolute right-0 top-14 w-64 border border-border bg-white p-2 shadow-[var(--shadow-card)]">
-              {nav.map((n) => (
-                <Link key={n.href} href={n.href} className="block border-b border-border/70 px-4 py-3 font-bold text-foreground/85 last:border-0 hover:bg-paper">
-                  {n.label}
-                </Link>
-              ))}
-              {open && <Link href="/requisitos" className="btn btn-primary mt-2 w-full justify-center">Inscripciones abiertas</Link>}
-            </nav>
-          </details>
+          <MobileMenu items={nav} showCta={open} />
         </div>
       </div>
     </header>

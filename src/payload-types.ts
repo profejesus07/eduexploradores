@@ -244,7 +244,7 @@ export interface Post {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Preescolar: cada registro es una diapositiva del slider. Primaria: un solo registro se muestra como banner (1° – 5°); si hay varios, se muestra un slider.
+ * Preescolar: cada registro es una diapositiva del slider. Primaria: un solo registro se muestra como tarjeta "Próximamente"; cuando agregues más (uno por grado), se mostrará un slider.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "levels".

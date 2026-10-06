@@ -5,7 +5,7 @@ import { folderOptions } from '@/blocks'
 export const Levels: CollectionConfig = {
   slug: 'levels',
   labels: { singular: 'Nivel / grado', plural: 'Niveles y grados' },
-  admin: { useAsTitle: 'title', defaultColumns: ['title', 'stage', 'order', 'active'], description: 'Preescolar: cada registro es una diapositiva del slider. Primaria: un solo registro se muestra como banner (1° – 5°); si hay varios, se muestra un slider.' },
+  admin: { useAsTitle: 'title', defaultColumns: ['title', 'stage', 'order', 'active'], description: 'Preescolar: cada registro es una diapositiva del slider. Primaria: un solo registro se muestra como tarjeta "Próximamente"; cuando agregues más (uno por grado), se mostrará un slider.' },
   defaultSort: 'order',
   access: {
     read: ({ req }) => (req.user ? true : { active: { equals: true } }),

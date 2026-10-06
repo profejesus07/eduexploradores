@@ -31,22 +31,21 @@ const pages = [
       h('h2', 'Misión'),
       p('Formar niños y niñas autónomos, empáticos y cooperativos, capaces de construir su propio aprendizaje mediante la exploración, el juego y la experiencia.'),
       list(['Desarrollo integral: cognitivo, socioafectivo, psicomotor y espiritual.', 'Estrategias lúdicas, artísticas y de investigación.', 'Fortalecimiento de la creatividad, la comunicación y la responsabilidad consigo mismos y con su entorno.']),
-      h('h2', 'Visión 2030'),
-      p('Consolidarnos para el año 2030 como una institución reconocida por promover el aprendizaje significativo y el desarrollo integral en educación inicial y primaria.'),
-      list(['Curiosidad, autonomía, creatividad y trabajo cooperativo como ejes de la construcción del conocimiento.', 'Fortalecer la empatía, el pensamiento crítico y el compromiso con el entorno.', 'Ambientes afectivos y seguros: aprender haciendo, reflexionando y compartiendo.', 'Preparar a los niños para los retos del siglo XXI con confianza y responsabilidad.']),
+      h('h2', 'Visión 2035'),
+      p('Exploradores del Saber proyecta consolidarse para el año 2035 como una institución reconocida por promover el aprendizaje significativo y el desarrollo integral de los niños y niñas en la educación inicial y primaria.'),
+      p('Será un espacio donde la curiosidad, la autonomía, la creatividad y el trabajo cooperativo orienten la construcción del conocimiento, fortaleciendo en cada estudiante la empatía, el pensamiento crítico y el compromiso con su entorno.'),
+      p('A través de ambientes afectivos y seguros, formaremos niños y niñas capaces de aprender haciendo, reflexionando y compartiendo, preparados para enfrentar con confianza y responsabilidad los retos del siglo XXI.'),
       block('button', { label: 'Conocer nuestros servicios', url: '/servicios', style: 'gold' }),
     ),
   },
   {
     slug: 'servicios', title: 'Servicios', subtitle: 'Escoge el servicio que mejor acompaña la etapa de tu hijo.',
-    metaDescription: 'Educación preescolar (Párvulos, Pre-Jardín, Jardín y Transición) y refuerzo escolar en Valledupar.',
+    metaDescription: 'Educación preescolar (Párvulos, Pre-Jardín, Jardín y Transición) en Valledupar.',
     content: doc(
       h('h2', 'Educación preescolar'),
       pm(text('Programa completo para la primera infancia: '), bold('Párvulos, Pre-Jardín, Jardín y Transición'), text('. Enfoque lúdico y constructivista orientado al desarrollo de habilidades motoras, sociales y cognitivas.')),
-      h('h2', 'Apoyo y refuerzos'),
-      p('Apoyo escolar personalizado para que cada estudiante alcance su máximo potencial. Ideal para nivelación o para avanzar en habilidades específicas.'),
       h('h3', 'Características destacadas'),
-      list(['Desarrollo de pensamiento lógico y creatividad.', 'Horarios adaptados por edad.', 'Metodología centrada en el estudiante.', 'Refuerzos en materias clave (Matemáticas, Lenguaje).', 'Campamentos de verano (talleres y actividades lúdicas).', 'Sesiones personalizadas y seguimiento.']),
+      list(['Desarrollo de pensamiento lógico y creatividad.', 'Horarios adaptados por edad.', 'Metodología centrada en el estudiante.', 'Campamentos de verano (talleres y actividades lúdicas).']),
       block('callout', { tone: 'gold', title: 'Inscripciones abiertas', text: 'Agenda una visita guiada y conoce nuestro espacio.' }),
       block('button', { label: 'Ver requisitos de matrícula', url: '/requisitos', style: 'primary' }),
     ),
@@ -73,13 +72,12 @@ const pages = [
       h('h2', 'Enfoque y programas académicos'),
       block('accordion', { items: [
         { question: '¿Cuál es el enfoque pedagógico principal?', answer: 'Constructivista: el estudiante está en el centro del aprendizaje. Se fomenta la curiosidad, el pensamiento crítico y la exploración activa, para formar solucionadores de problemas y no solo receptores de información.' },
-        { question: '¿Qué niveles educativos ofrecen?', answer: 'Preescolar (Párvulos, Pre-Jardín, Jardín y Transición), refuerzo escolar y Básica Primaria (1° a 5°).' },
+        { question: '¿Qué niveles educativos ofrecen?', answer: 'Preescolar (Párvulos, Pre-Jardín, Jardín y Transición). La Básica Primaria (1° a 5°) estará disponible próximamente.' },
         { question: '¿Cómo integran el inglés?', answer: 'Con énfasis en inglés desde Preescolar mediante inmersión lúdica, desarrollando fluidez y uso del idioma en áreas como tecnología y ciencia.' },
       ] }),
       h('h2', 'Información práctica y logística'),
       block('accordion', { items: [
         { question: '¿Cómo es el proceso para solicitar un cupo?', answer: '1) Contactar para agendar una visita guiada.\n2) Entrevista con la dirección.\n3) Documentación y matrícula.' },
-        { question: '¿Ofrecen refuerzos escolares o programas de vacaciones?', answer: 'Es un servicio que estamos organizando. Escríbenos para conocer la disponibilidad.' },
         { question: '¿Cuáles son los datos de contacto y la ubicación?', answer: 'Correo: exploradoresdelsaber@gmail.com\nCelular: 311 740 5949\nDirección: Urb. Casa Carmelo Etapa II, Manzana C Casa 1, Valledupar.' },
         { question: '¿Cuáles son los horarios de Preescolar? (lunes a viernes)', answer: 'Párvulos y Pre-Jardín: 7:45 a.m. – 12:00 m.\nJardín y Transición: 7:15 a.m. – 12:15 p.m.' },
       ] }),
@@ -114,14 +112,14 @@ if (!(await payload.count({ collection: 'posts' })).totalDocs) {
     collection: 'posts',
     data: {
       title: 'Inscripciones abiertas en Exploradores del Saber',
-      excerpt: 'Conoce nuestros niveles de preescolar, el refuerzo escolar y cómo solicitar un cupo para tu hijo.',
+      excerpt: 'Conoce nuestros niveles de preescolar y cómo solicitar un cupo para tu hijo.',
       category: 'familias',
       publishedAt: new Date().toISOString(),
       _status: 'published',
       content: doc(
         p('En Exploradores del Saber formamos niños curiosos, autónomos y comprometidos con el cuidado del mundo que los rodea, a través de la exploración, el juego y la experiencia.'),
         h('h2', 'Nuestros servicios'),
-        list(['Educación preescolar: Párvulos, Pre-Jardín, Jardín y Transición.', 'Apoyo y refuerzos escolares personalizados.']),
+        list(['Educación preescolar: Párvulos, Pre-Jardín, Jardín y Transición.', 'Básica Primaria (1° a 5°): próximamente.']),
         block('callout', { tone: 'gold', title: '¿Cómo solicitar un cupo?', text: 'Agenda una visita guiada, conversa con la dirección y presenta la documentación de matrícula.' }),
         block('button', { label: 'Ver requisitos de matrícula', url: '/requisitos', style: 'primary' }),
       ),
@@ -138,9 +136,9 @@ if (!(await payload.count({ collection: 'levels' })).totalDocs) {
     { title: 'Transición', badge: '04', subtitle: 'Hacia la primaria', summary: 'Consolidamos las bases académicas y sociales para dar el paso a la primaria con confianza y autonomía.', highlights: hl('Formación integral', 'Pensamiento crítico y autonomía', 'Inglés con inmersión lúdica'), schedule: 'Lunes a viernes · 7:15 a.m. – 12:15 p.m.', folder: 'verde' },
   ]
   const prim = [{
-    title: 'Básica Primaria', badge: '1° – 5°', subtitle: 'Educación básica',
-    summary: 'Aprendizaje activo con enfoque constructivista: curiosidad, pensamiento crítico y exploración, con acompañamiento en las áreas clave.',
-    highlights: hl('Enfoque constructivista', 'Inglés con inmersión lúdica', 'Refuerzo en Matemáticas y Lenguaje'),
+    title: 'Básica Primaria', badge: '1° – 5°', subtitle: 'Próximamente',
+    summary: 'Estamos preparando este nivel con el mismo enfoque constructivista. Muy pronto compartiremos toda la información.',
+    highlights: [],
   }]
   let n = 0
   for (const l of pre) await payload.create({ collection: 'levels', data: { ...l, stage: 'preescolar', order: ++n, active: true } as any })
