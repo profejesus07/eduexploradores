@@ -1,0 +1,19 @@
+1:"$Sreact.fragment"
+2:I[97367,["/eduexploradores/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+7:I[97367,["/eduexploradores/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+8:I[97367,["/eduexploradores/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+a:I[39756,["/eduexploradores/_next/static/chunks/3fntmmi971322.js"],"default"]
+b:I[37457,["/eduexploradores/_next/static/chunks/3fntmmi971322.js"],"default"]
+6:X
+d:X
+d:C
+0:{"buildId":"q8QeNE01rDSWo8QZ814ji","data":[{"rsc":["$","$1","c",{"children":[[["$","header",null,{"className":"relative overflow-hidden border-b border-border bg-paper","children":[["$","div",null,{"aria-hidden":true,"className":"absolute -right-24 -top-24 h-80 w-80 rounded-full border border-secondary/30"}],["$","div",null,{"aria-hidden":true,"className":"absolute -right-10 -top-10 h-52 w-52 rounded-full border border-secondary/20"}],["$","div",null,{"className":"relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20","children":["$undefined",["$","p",null,{"className":"eyebrow rise rise-1","children":"Exploradores del Saber"}],["$","h1",null,{"className":"rise rise-2 mt-3 max-w-3xl text-5xl text-primary sm:text-6xl lg:text-7xl","children":"Contacto"}],["$","hr",null,{"className":"rule rise rise-3 mt-6"}],["$","p",null,{"className":"rise rise-4 mt-6 max-w-2xl text-xl text-muted-foreground","children":"Visítanos, escríbenos o llámanos. Con gusto te mostramos nuestro espacio."}]]}]]}],["$","article",null,{"className":"mx-auto max-w-6xl px-4 py-16 sm:px-6","children":["$undefined",["$","div",null,{"className":"prose-edu ","children":[["$","h2","0",{"children":["Datos de contacto"]}],["$","ul","1",{"className":"list-bullet","children":[["$","li","0",{"className":"","value":1,"children":["Dirección: Urb. Casa Carmelo Etapa II, Manzana C Casa 1, Valledupar"]}],["$","li","1",{"className":"","value":2,"children":["Celular: 311 740 5949"]}],["$","li","2",{"className":"","value":3,"children":["Correo: exploradoresdelsaber@gmail.com"]}]]}],["$","h2","2",{"children":["Horarios (lunes a viernes)"]}],["$","ul","3",{"className":"list-bullet","children":[["$","li","0",{"className":"","value":1,"children":["Párvulos y Pre-Jardín: 7:45 a.m. – 12:00 m."]}],["$","li","1",{"className":"","value":2,"children":["Jardín y Transición: 7:15 a.m. – 12:15 p.m."]}]]}],["$","p","4",{"children":["$","a",null,{"href":"mailto:exploradoresdelsaber@gmail.com","className":"btn border-secondary text-gold-text hover:bg-secondary hover:text-white !no-underline","children":"Escríbenos por correo"}]}]]}]]}]],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Contacto · Exploradores del Saber"}],["$","meta","1",{"name":"description","content":"Dirección, teléfono, correo y horarios de Exploradores del Saber en Valledupar."}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@9","staleTime":"$6","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$La",null,{"parallelRouterKey":"children","template":["$","$Lb",null,{}]}]]}],"isPartial":"$@c","staleTime":"$6","varyParams":"$d"}],"isUpgradeableISRFallback":false,"a":"$@e","rootVaryParams":null,"needsRuntimeRequest":"$@f"}
+4:null
+f:true
+6:300
+6:C
+e:0
+9:"$undefined"
+c:"$undefined"
+5:"$undefined"

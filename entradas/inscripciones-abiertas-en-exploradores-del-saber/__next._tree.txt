@@ -1,0 +1,8 @@
+:HL["/eduexploradores/_next/static/chunks/3zfn1681sp7v4.css","style"]
+:HL["/eduexploradores/_next/static/media/115e7a2565b70400-s.p.1vgtwd90zpq_8.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/eduexploradores/_next/static/media/48e5af244f2769e4-s.p.08n9sr8c15n2e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/eduexploradores/_next/static/media/7a454fa283e484f3-s.p.2b2623_cei-1-.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/eduexploradores/_next/static/media/89ea96820aa96980-s.p.0hs6q6udzld4a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/eduexploradores/_next/static/media/a41eab1df8ed80c4-s.p.0i2mshnqgrio_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/eduexploradores/_next/static/media/ed5f1f9bced69653-s.p.2li_3lqay9qjq.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(site)","param":null,"prefetchHints":4144,"slots":{"children":{"name":"entradas","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"inscripciones-abiertas-en-exploradores-del-saber","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"q8QeNE01rDSWo8QZ814ji"}
