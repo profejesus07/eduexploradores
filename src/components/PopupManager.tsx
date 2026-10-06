@@ -9,6 +9,7 @@ import VideoEmbed from '@/components/VideoEmbed'
 export type PopupData = {
   id: number | string
   title: string
+  showTitle?: boolean | null
   imageUrl?: string | null
   imageAlt?: string | null
   body?: any
@@ -40,6 +41,34 @@ function markSeen(p: PopupData) {
   } catch {}
 }
 
+// Nodos de Lexical que por sí solos no aportan contenido visible
+const EMPTY_NODE_TYPES = ['root', 'paragraph', 'heading', 'list', 'listitem', 'quote', 'linebreak', 'tab', 'text']
+
+// El editor guarda un texto "vacío" como un párrafo sin texto: eso no cuenta como descripción.
+function richTextHasContent(node: any): boolean {
+  if (!node) return false
+  if (typeof node.text === 'string' && node.text.trim() !== '') return true
+  if (Array.isArray(node.children)) return node.children.some(richTextHasContent)
+  // Nodos sin hijos que sí se ven (imagen, línea horizontal, tabla, bloque…)
+  return typeof node.type === 'string' && !EMPTY_NODE_TYPES.includes(node.type)
+}
+
+function flags(p: PopupData) {
+  return {
+    showTitle: Boolean(p.showTitle && p.title?.trim()),
+    hasImage: Boolean(p.imageUrl),
+    hasBody: richTextHasContent(p.body?.root ?? p.body),
+    hasVideo: Boolean(p.videoUrl?.trim()),
+    hasCta: Boolean(p.ctaUrl?.trim()),
+  }
+}
+
+// Un popup sin nada que mostrar no se abre.
+function hasVisibleContent(p: PopupData) {
+  const f = flags(p)
+  return f.showTitle || f.hasImage || f.hasBody || f.hasVideo || f.hasCta
+}
+
 export default function PopupManager({ popups }: { popups: PopupData[] }) {
   const pathname = usePathname()
   const [current, setCurrent] = useState<PopupData | null>(null)
@@ -47,7 +76,7 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
 
   useEffect(() => {
     if (pathname.startsWith('/admin')) return
-    const next = popups.find((p) => (p.showOn === 'all' || pathname === '/') && !alreadySeen(p))
+    const next = popups.find((p) => hasVisibleContent(p) && (p.showOn === 'all' || pathname === '/') && !alreadySeen(p))
     if (!next) return
     const t = setTimeout(() => setCurrent(next), Math.max(0, next.delaySeconds) * 1000)
     return () => clearTimeout(t)
@@ -63,11 +92,15 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
     ref.current?.close()
     setCurrent(null)
   }
+  const f = flags(current)
+  const hasText = f.showTitle || f.hasBody || f.hasVideo || f.hasCta
 
   return (
     <dialog
       ref={ref}
-      aria-labelledby="popup-title"
+      // Sin título visible, el título interno solo se usa como nombre accesible del diálogo
+      aria-labelledby={f.showTitle ? 'popup-title' : undefined}
+      aria-label={f.showTitle ? undefined : current.title}
       onClose={close}
       onClick={(e) => e.target === ref.current && close()}
       className="popup m-auto w-[min(92vw,34rem)] max-h-[90vh] overflow-y-auto border-t-4 border-secondary bg-background p-0 text-foreground shadow-2xl backdrop:bg-primary-dark/70 backdrop:backdrop-blur-[2px]"
@@ -75,17 +108,19 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
       <button onClick={close} aria-label="Cerrar" className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center bg-white/95 text-primary shadow transition-transform hover:rotate-90">
         <X aria-hidden />
       </button>
-      {current.imageUrl && <img src={current.imageUrl} alt={current.imageAlt || ''} className="max-h-72 w-full object-cover" />}
-      <div className="space-y-5 p-8">
-        <h2 id="popup-title" className="text-4xl text-primary">{current.title}</h2>
-        {current.body && <RichText data={current.body} />}
-        {current.videoUrl && <VideoEmbed url={current.videoUrl} />}
-        {current.ctaUrl && (
-          <a href={current.ctaUrl} onClick={close} className="btn btn-primary">
-            {current.ctaLabel || 'Conocer más'}
-          </a>
-        )}
-      </div>
+      {f.hasImage && <img src={current.imageUrl!} alt={current.imageAlt || ''} className="max-h-72 w-full object-cover" />}
+      {hasText && (
+        <div className={`space-y-5 p-8 ${f.hasImage ? '' : 'pt-16'}`}>
+          {f.showTitle && <h2 id="popup-title" className="text-4xl text-primary">{current.title}</h2>}
+          {f.hasBody && <RichText data={current.body} />}
+          {f.hasVideo && <VideoEmbed url={current.videoUrl!} />}
+          {f.hasCta && (
+            <a href={current.ctaUrl!} onClick={close} className="btn btn-primary">
+              {current.ctaLabel?.trim() || 'Conocer más'}
+            </a>
+          )}
+        </div>
+      )}
     </dialog>
   )
 }

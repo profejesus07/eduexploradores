@@ -14,16 +14,39 @@ export const Popups: CollectionConfig = {
     delete: isLoggedIn,
   },
   fields: [
-    { name: 'title', label: 'Título interno / encabezado', type: 'text', required: true },
+    {
+      name: 'title',
+      label: 'Título interno / encabezado',
+      type: 'text',
+      required: true,
+      admin: { description: 'Identifica el popup en el panel. Solo se muestra al público si marcas "Mostrar el título en el popup".' },
+    },
+    {
+      name: 'showTitle',
+      label: 'Mostrar el título en el popup',
+      type: 'checkbox',
+      defaultValue: false,
+    },
     { name: 'active', label: 'Activo', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
     { name: 'image', label: 'Imagen', type: 'upload', relationTo: 'media' },
-    { name: 'body', label: 'Texto (admite enlaces)', type: 'richText', editor: richEditor },
+    {
+      name: 'body',
+      label: 'Texto (admite enlaces)',
+      type: 'richText',
+      editor: richEditor,
+      admin: { description: 'Opcional. Si lo dejas vacío no se muestra ningún texto.' },
+    },
     { name: 'videoUrl', label: 'URL de video (YouTube, Vimeo o .mp4)', type: 'text' },
     {
       type: 'row',
       fields: [
         { name: 'ctaLabel', label: 'Texto del botón', type: 'text' },
-        { name: 'ctaUrl', label: 'Enlace del botón', type: 'text' },
+        {
+          name: 'ctaUrl',
+          label: 'Enlace del botón',
+          type: 'text',
+          admin: { description: 'El botón solo aparece si escribes un enlace.' },
+        },
       ],
     },
     {

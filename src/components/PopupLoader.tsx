@@ -24,6 +24,8 @@ export default async function PopupLoader() {
       return {
         id: d.id,
         title: d.title,
+        // showTitle es un campo nuevo; se lee con un tipo ampliado hasta regenerar payload-types.ts
+        showTitle: (d as typeof d & { showTitle?: boolean | null }).showTitle ?? false,
         imageUrl: mediaSrc(img, 'card'),
         imageAlt: img?.alt,
         body: d.body,
