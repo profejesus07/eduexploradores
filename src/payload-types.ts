@@ -99,9 +99,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    gallery: Gallery;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    gallery: GallerySelect<false> | GallerySelect<true>;
   };
   locale: null;
   widgets: {
@@ -660,6 +662,33 @@ export interface SiteSetting {
   createdAt?: string | null;
 }
 /**
+ * Galería de la pantalla de inicio. Cada elemento sin imagen muestra una imagen de demostración: sube una foto para reemplazarla.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery".
+ */
+export interface Gallery {
+  id: number;
+  show?: boolean | null;
+  eyebrow?: string | null;
+  title?: string | null;
+  intro?: string | null;
+  layout?: ('mosaic' | 'grid') | null;
+  /**
+   * El mosaico está pensado para 6 imágenes (también funciona con otras cantidades).
+   */
+  items?:
+    | {
+        image?: (number | null) | Media;
+        caption: string;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
@@ -670,6 +699,28 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   facebook?: T;
   instagram?: T;
   enrollmentOpen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery_select".
+ */
+export interface GallerySelect<T extends boolean = true> {
+  show?: T;
+  eyebrow?: T;
+  title?: T;
+  intro?: T;
+  layout?: T;
+  items?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        detail?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

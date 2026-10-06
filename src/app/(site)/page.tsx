@@ -2,6 +2,7 @@ import { ArrowRight, Compass, GraduationCap, HeartHandshake, Leaf, Puzzle, Users
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/assets/logo.webp'
+import HomeGallery from '@/components/HomeGallery'
 import LevelSlider, { type LevelSlide } from '@/components/LevelSlider'
 import PostCard from '@/components/PostCard'
 import PrimariaCard from '@/components/PrimariaCard'
@@ -148,6 +149,9 @@ export default async function HomePage() {
         </div>
         <Link href="/nosotros" className="link-underline mt-8 inline-flex items-center gap-2 font-bold tracking-wide text-primary">Conocer nuestro horizonte institucional <ArrowRight aria-hidden size={16} /></Link>
       </section>
+
+      {/* GALERÍA (se activa desde el admin) */}
+      <HomeGallery />
 
       {/* ADMISIÓN */}
       <section className="on-dark relative overflow-hidden bg-primary text-white" aria-labelledby="admision">

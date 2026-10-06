@@ -145,6 +145,25 @@ if (!(await payload.count({ collection: 'levels' })).totalDocs) {
   for (const l of prim) await payload.create({ collection: 'levels', data: { ...l, stage: 'primaria', order: ++n, active: true } as any })
   console.log('+ niveles (preescolar y primaria)')
 }
+const gal = await payload.findGlobal({ slug: 'gallery' })
+if (!gal.items?.length) {
+  await payload.updateGlobal({
+    slug: 'gallery',
+    data: {
+      show: true, eyebrow: 'Galería', title: 'Momentos que inspiran',
+      intro: 'Un recorrido por la forma en que exploramos, jugamos y aprendemos cada día.', layout: 'mosaic',
+      items: [
+        { caption: 'Ciencia en el aula', detail: 'Experimentos para preguntar, observar y descubrir.' },
+        { caption: 'Hora de lectura', detail: 'Historias que despiertan la imaginación.' },
+        { caption: 'Aprender en la naturaleza', detail: 'El entorno como primer salón de clases.' },
+        { caption: 'Creatividad y arte', detail: 'Color, forma y expresión libre.' },
+        { caption: 'Juego y construcción', detail: 'Armar, probar y trabajar en equipo.' },
+        { caption: 'Exploración', detail: 'Curiosidad que nos lleva más lejos.' },
+      ],
+    } as any,
+  })
+  console.log('+ galería (imágenes de demostración)')
+}
 const hasTestimonials = (await payload.count({ collection: 'testimonials' })).totalDocs
 if (!hasTestimonials) {
   for (const t of [

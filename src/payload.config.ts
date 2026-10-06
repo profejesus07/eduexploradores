@@ -15,6 +15,7 @@ import { Popups } from '@/collections/Popups'
 import { Posts } from '@/collections/Posts'
 import { Testimonials } from '@/collections/Testimonials'
 import { Users } from '@/collections/Users'
+import { Gallery } from '@/globals/Gallery'
 import { SiteSettings } from '@/globals/SiteSettings'
 import { richEditor } from '@/lib/editor'
 
@@ -28,7 +29,7 @@ export default buildConfig({
   },
   i18n: { supportedLanguages: { es }, fallbackLanguage: 'es' },
   collections: [Pages, Posts, Levels, Popups, Testimonials, Media, Users],
-  globals: [SiteSettings],
+  globals: [SiteSettings, Gallery],
   editor: richEditor,
   secret: process.env.PAYLOAD_SECRET || '',
   // Producción (Vercel): Postgres si existe POSTGRES_URL. Local: SQLite.
