@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    levels: Level;
     popups: Popup;
     testimonials: Testimonial;
     media: Media;
@@ -82,6 +83,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    levels: LevelsSelect<false> | LevelsSelect<true>;
     popups: PopupsSelect<false> | PopupsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -242,6 +244,33 @@ export interface Post {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Cada registro es una diapositiva de los sliders de Preescolar y Primaria.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "levels".
+ */
+export interface Level {
+  id: number;
+  stage: 'preescolar' | 'primaria';
+  order?: number | null;
+  active?: boolean | null;
+  title: string;
+  badge?: string | null;
+  subtitle?: string | null;
+  summary: string;
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  schedule?: string | null;
+  folder?: ('azul' | 'roja' | 'amarilla' | 'verde' | 'naranja' | 'morada' | 'gris') | null;
+  image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "popups".
  */
@@ -350,6 +379,10 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
+        relationTo: 'levels';
+        value: number | Level;
+      } | null)
+    | ({
         relationTo: 'popups';
         value: number | Popup;
       } | null)
@@ -437,6 +470,30 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "levels_select".
+ */
+export interface LevelsSelect<T extends boolean = true> {
+  stage?: T;
+  order?: T;
+  active?: T;
+  title?: T;
+  badge?: T;
+  subtitle?: T;
+  summary?: T;
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  schedule?: T;
+  folder?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

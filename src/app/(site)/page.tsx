@@ -2,18 +2,12 @@ import { ArrowRight, Compass, GraduationCap, HeartHandshake, Leaf, Puzzle, Users
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/assets/logo.webp'
+import LevelSlider, { type LevelSlide } from '@/components/LevelSlider'
 import PostCard from '@/components/PostCard'
 import Reveal from '@/components/Reveal'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
-
-const levels = [
-  { n: '01', name: 'Párvulos', blurb: 'Primeros pasos: exploración sensorial, juego y vínculo seguro.', color: 'var(--color-primary)' },
-  { n: '02', name: 'Pre-Jardín', blurb: 'Lenguaje, movimiento y creatividad a través de las artes.', color: 'var(--color-spark)' },
-  { n: '03', name: 'Jardín', blurb: 'Bases académicas y sociales con pensamiento lógico.', color: 'var(--color-secondary)' },
-  { n: '04', name: 'Transición', blurb: 'Preparación integral para dar el salto a la primaria.', color: 'var(--color-science)' },
-]
 
 const audiences = [
   { icon: HeartHandshake, title: 'Familias', text: 'Admisiones, requisitos y acompañamiento.', href: '/requisitos' },
@@ -34,6 +28,20 @@ export default async function HomePage() {
     .find({ collection: 'posts', limit: 3, depth: 1, sort: '-publishedAt', overrideAccess: false })
     .then((r) => r.docs)
     .catch(() => [])
+  const levelDocs = await payload
+    .find({ collection: 'levels', limit: 40, depth: 1, sort: 'order', overrideAccess: false })
+    .then((r) => r.docs)
+    .catch(() => [])
+  const toSlide = (d: (typeof levelDocs)[number]): LevelSlide => {
+    const img = typeof d.image === 'object' ? d.image : null
+    return {
+      id: d.id, title: d.title, badge: d.badge, subtitle: d.subtitle, summary: d.summary,
+      highlights: (d.highlights ?? []).map((h) => h.text), schedule: d.schedule, folder: d.folder,
+      imageUrl: img?.sizes?.card?.url || img?.url, imageAlt: img?.alt,
+    }
+  }
+  const preescolar = levelDocs.filter((d) => d.stage === 'preescolar').map(toSlide)
+  const primaria = levelDocs.filter((d) => d.stage === 'primaria').map(toSlide)
   const testimonials = await payload
     .find({ collection: 'testimonials', limit: 6, overrideAccess: false, sort: 'createdAt' })
     .then((r) => r.docs)
@@ -42,8 +50,8 @@ export default async function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="on-dark relative overflow-hidden bg-primary-dark text-white">
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_30%,rgb(62_110_156/.35),transparent_60%)]" />
+      <section className="on-dark relative overflow-hidden bg-[linear-gradient(135deg,var(--color-primary-dark)_0%,var(--color-primary)_130%)] text-white">
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_30%,rgb(26_176_249/.22),transparent_60%)]" />
         <div aria-hidden className="spin-slow absolute -right-40 top-1/2 h-[46rem] w-[46rem] -translate-y-1/2 rounded-full border border-gold-soft/15" />
         <div aria-hidden className="absolute -right-24 top-1/2 h-[38rem] w-[38rem] -translate-y-1/2 rounded-full border border-gold-soft/20" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 md:grid-cols-[1.25fr_1fr] md:py-28">
@@ -56,7 +64,7 @@ export default async function HomePage() {
               Nutrimos mentes curiosas y corazones compasivos, combinando la excelencia académica con un profundo desarrollo humano, en un entorno seguro e inspirador.
             </p>
             <div className="rise rise-4 mt-10 flex flex-wrap gap-4">
-              <Link href="/requisitos" className="btn btn-light">Solicitar un cupo <ArrowRight aria-hidden size={18} className="arrow" /></Link>
+              <Link href="/requisitos" className="btn btn-gold">Solicitar un cupo <ArrowRight aria-hidden size={18} className="arrow" /></Link>
               <Link href="/servicios" className="btn btn-ghost-light">Conocer servicios</Link>
             </div>
           </div>
@@ -105,18 +113,9 @@ export default async function HomePage() {
             <h2 id="niveles" className="mt-4 max-w-2xl text-4xl text-primary sm:text-6xl">Un camino para cada etapa</h2>
             <p className="mt-5 max-w-2xl text-xl text-muted-foreground">Programa completo para la primera infancia con enfoque lúdico y constructivista, acompañado de refuerzo escolar personalizado.</p>
           </Reveal>
-          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {levels.map((l, i) => (
-              <Reveal as="li" key={l.name} delay={i * 100}>
-                <article className="lift h-full border border-border bg-card p-7" style={{ borderTop: `3px solid ${l.color}` }}>
-                  <p className="font-display text-5xl font-medium text-secondary/70">{l.n}</p>
-                  <h3 className="mt-3 text-3xl text-primary">{l.name}</h3>
-                  <p className="mt-3 text-muted-foreground">{l.blurb}</p>
-                </article>
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal className="mt-8 flex flex-col items-start gap-5 border border-border bg-card p-8 sm:flex-row sm:items-center sm:justify-between">
+          {preescolar.length > 0 && <LevelSlider kicker="Primera infancia" title="Preescolar" caption="Párvulos · Pre-Jardín · Jardín · Transición" slides={preescolar} badgeStyle="number" />}
+          {primaria.length > 0 && <LevelSlider kicker="Educación básica" title="Básica Primaria" caption="Grados 1° a 5°" slides={primaria} badgeStyle="grade" />}
+          <Reveal className="mt-16 flex flex-col items-start gap-5 border border-border bg-card p-8 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="text-3xl text-primary">Refuerzo escolar</h3>
               <p className="mt-1 max-w-2xl text-muted-foreground">Acompañamiento personalizado para potenciar el aprendizaje, los hábitos de estudio y las competencias básicas.</p>
@@ -172,7 +171,7 @@ export default async function HomePage() {
             ))}
           </ol>
           <Reveal className="mt-12 flex flex-wrap gap-4">
-            <Link href="/requisitos" className="btn btn-light">Ver requisitos</Link>
+            <Link href="/requisitos" className="btn btn-gold">Ver requisitos</Link>
             <Link href="/contacto" className="btn btn-ghost-light">Agendar visita</Link>
           </Reveal>
         </div>

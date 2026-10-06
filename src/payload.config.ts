@@ -8,6 +8,7 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { migrations } from '@/migrations'
+import { Levels } from '@/collections/Levels'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Popups } from '@/collections/Popups'
@@ -26,7 +27,7 @@ export default buildConfig({
     meta: { titleSuffix: ' — Exploradores del Saber' },
   },
   i18n: { supportedLanguages: { es }, fallbackLanguage: 'es' },
-  collections: [Pages, Posts, Popups, Testimonials, Media, Users],
+  collections: [Pages, Posts, Levels, Popups, Testimonials, Media, Users],
   globals: [SiteSettings],
   editor: richEditor,
   secret: process.env.PAYLOAD_SECRET || '',

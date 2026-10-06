@@ -129,6 +129,24 @@ if (!(await payload.count({ collection: 'posts' })).totalDocs) {
   })
   console.log('+ entrada de bienvenida')
 }
+if (!(await payload.count({ collection: 'levels' })).totalDocs) {
+  const hl = (...t: string[]) => t.map((text) => ({ text }))
+  const pre = [
+    { title: 'Párvulos', badge: '01', subtitle: 'Primeros pasos', summary: 'Ambiente seguro y estimulante donde los niños aprenden a través del juego, las artes y la exploración sensorial.', highlights: hl('Exploración sensorial', 'Juego y artes', 'Ambiente seguro y estimulante'), schedule: 'Lunes a viernes · 7:45 a.m. – 12:00 m.', folder: 'azul' },
+    { title: 'Pre-Jardín', badge: '02', subtitle: 'Explorar y crear', summary: 'Seguimos aprendiendo a través del juego, las artes y la exploración, fortaleciendo habilidades motoras, sociales y cognitivas.', highlights: hl('Habilidades motoras y sociales', 'Enfoque lúdico y constructivista', 'Creatividad y expresión'), schedule: 'Lunes a viernes · 7:45 a.m. – 12:00 m.', folder: 'roja' },
+    { title: 'Jardín', badge: '03', subtitle: 'Bases para crecer', summary: 'Formación integral que fortalece las bases académicas y sociales, preparando a grandes ciudadanos.', highlights: hl('Pensamiento lógico y creatividad', 'Metodología centrada en el estudiante', 'Inglés con inmersión lúdica'), schedule: 'Lunes a viernes · 7:15 a.m. – 12:15 p.m.', folder: 'amarilla' },
+    { title: 'Transición', badge: '04', subtitle: 'Hacia la primaria', summary: 'Consolidamos las bases académicas y sociales para dar el paso a la primaria con confianza y autonomía.', highlights: hl('Formación integral', 'Pensamiento crítico y autonomía', 'Inglés con inmersión lúdica'), schedule: 'Lunes a viernes · 7:15 a.m. – 12:15 p.m.', folder: 'verde' },
+  ]
+  const prim = ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto'].map((title, i) => ({
+    title, badge: `${i + 1}°`, subtitle: 'Básica Primaria',
+    summary: 'Aprendizaje activo con enfoque constructivista: curiosidad, pensamiento crítico y exploración, con acompañamiento en las áreas clave.',
+    highlights: hl('Enfoque constructivista', 'Inglés con inmersión lúdica', 'Refuerzo en Matemáticas y Lenguaje'),
+  }))
+  let n = 0
+  for (const l of pre) await payload.create({ collection: 'levels', data: { ...l, stage: 'preescolar', order: ++n, active: true } as any })
+  for (const l of prim) await payload.create({ collection: 'levels', data: { ...l, stage: 'primaria', order: ++n, active: true } as any })
+  console.log('+ niveles (preescolar y primaria)')
+}
 const hasTestimonials = (await payload.count({ collection: 'testimonials' })).totalDocs
 if (!hasTestimonials) {
   for (const t of [

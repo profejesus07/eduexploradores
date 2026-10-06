@@ -1,33 +1,33 @@
-/* Exploradores del Saber — tokens de diseño · dirección editorial-académica
-   Derivados del logotipo (azul, dorado, verde, celeste, rojo) en tonos sobrios. */
+/* Exploradores del Saber — tokens de diseño · editorial-académico con los colores REALES del logotipo.
+   Regla de uso: blanco y azul pálido ~60 % · azul real ~30 % · dorado real ≤10 %.
+   Verde, celeste y rojo: solo señales pequeñas con significado (carpetas, estados). Nunca decoración. */
 @theme {
-  /* Marca */
-  --color-primary: #0E2A63;        /* azul institucional */
-  --color-primary-dark: #091B45;   /* azul profundo: hero, pie */
-  --color-secondary: #A97F24;      /* dorado antiguo: filetes y detalles (no para texto pequeño) */
-  --color-gold-soft: #D8C48A;      /* dorado suave sobre fondos oscuros */
-  --color-gold-text: #7A5A12;      /* dorado para texto sobre fondo claro */
-  --color-science: #2E6B57;        /* verde bosque */
-  --color-science-dark: #2E6B57;
-  --color-sky: #3E6E9C;            /* azul acero */
-  --color-sky-dark: #3E6E9C;
-  --color-spark: #8E3B46;          /* vino */
-  --color-spark-dark: #8E3B46;
+  /* Marca (muestreados del logotipo) */
+  --color-primary: #0A33AD;        /* azul real del escudo */
+  --color-primary-dark: #061A5E;   /* mismo matiz, más profundo: hero, pie */
+  --color-secondary: #FFCB02;      /* dorado real del aro */
+  --color-gold-soft: #FFD84D;      /* dorado sobre fondos oscuros */
+  --color-gold-text: #7A5A00;      /* dorado legible sobre fondo claro (6.4:1) */
+
+  /* Acentos del logotipo — uso mínimo */
+  --color-science: #00A849;        --color-science-dark: #007A38;   /* verde microscopio */
+  --color-sky: #1AB0F9;            --color-sky-dark: #0B6FB8;       /* celeste libro/órbitas */
+  --color-spark: #FB3042;          --color-spark-dark: #D81F33;     /* rojo núcleo atómico */
 
   /* Superficies y texto */
-  --color-background: #FAF8F3;     /* marfil */
-  --color-paper: #F3EFE4;          /* marfil oscuro: secciones alternas */
+  --color-background: #FFFFFF;
+  --color-paper: #F3F6FD;          /* azul pálido derivado del azul real */
   --color-card: #FFFFFF;
-  --color-foreground: #141C2E;
-  --color-muted-foreground: #5A6275;
-  --color-border: #E4DECF;
+  --color-foreground: #0B1640;
+  --color-muted-foreground: #4B5878;
+  --color-border: #DAE2F4;
   --color-on-primary: #FFFFFF;
-  --color-ring: #3E6E9C;
+  --color-ring: #0B6FB8;
 
   /* Semánticos */
-  --color-success: var(--color-science);
-  --color-info: var(--color-sky);
-  --color-destructive: var(--color-spark);
+  --color-success: var(--color-science-dark);
+  --color-info: var(--color-sky-dark);
+  --color-destructive: var(--color-spark-dark);
 
-  --shadow-card: 0 1px 2px rgb(9 27 69 / .06), 0 10px 28px -14px rgb(9 27 69 / .22);
+  --shadow-card: 0 1px 2px rgb(6 26 94 / .06), 0 12px 30px -14px rgb(6 26 94 / .28);
 }
