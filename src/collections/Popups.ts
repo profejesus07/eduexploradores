@@ -40,12 +40,17 @@ export const Popups: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', label: 'Texto del botón', type: 'text' },
+        {
+          name: 'ctaLabel',
+          label: 'Texto del botón',
+          type: 'text',
+          admin: { description: 'El botón solo aparece si escribes el texto y el enlace.' },
+        },
         {
           name: 'ctaUrl',
           label: 'Enlace del botón',
           type: 'text',
-          admin: { description: 'El botón solo aparece si escribes un enlace.' },
+          admin: { description: 'Déjalo vacío si no quieres botón.' },
         },
       ],
     },

@@ -12,6 +12,8 @@ export type PopupData = {
   showTitle?: boolean | null
   imageUrl?: string | null
   imageAlt?: string | null
+  imageWidth?: number | null
+  imageHeight?: number | null
   body?: any
   videoUrl?: string | null
   ctaLabel?: string | null
@@ -59,7 +61,8 @@ function flags(p: PopupData) {
     hasImage: Boolean(p.imageUrl),
     hasBody: richTextHasContent(p.body?.root ?? p.body),
     hasVideo: Boolean(p.videoUrl?.trim()),
-    hasCta: Boolean(p.ctaUrl?.trim()),
+    // El botón necesita texto Y enlace; con uno solo no se muestra.
+    hasCta: Boolean(p.ctaUrl?.trim() && p.ctaLabel?.trim()),
   }
 }
 
@@ -94,6 +97,17 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
   }
   const f = flags(current)
   const hasText = f.showTitle || f.hasBody || f.hasVideo || f.hasCta
+  const ratio = current.imageWidth && current.imageHeight ? current.imageWidth / current.imageHeight : null
+
+  // Solo imagen: el cuadro se ajusta exactamente a la imagen (completa, sin recortes ni barras),
+  // centrado y siempre dentro de la pantalla, también en celulares (vertical u horizontal).
+  const hugImage = f.hasImage && !hasText && ratio !== null
+  const dialogStyle = hugImage ? { width: `min(92vw, 34rem, calc((100dvh - 3rem) * ${ratio}))` } : undefined
+  const imgClass = hugImage
+    ? 'block h-auto w-full'
+    : hasText
+      ? 'block max-h-[60dvh] w-full object-contain'
+      : 'block max-h-[calc(100dvh-3rem)] w-full object-contain'
 
   return (
     <dialog
@@ -103,12 +117,21 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
       aria-label={f.showTitle ? undefined : current.title}
       onClose={close}
       onClick={(e) => e.target === ref.current && close()}
-      className="popup m-auto w-[min(92vw,34rem)] max-h-[90vh] overflow-y-auto border-t-4 border-secondary bg-background p-0 text-foreground shadow-2xl backdrop:bg-primary-dark/70 backdrop:backdrop-blur-[2px]"
+      style={dialogStyle}
+      className="popup m-auto w-[min(92vw,34rem)] max-h-[calc(100dvh-1.5rem)] overflow-y-auto border-t-4 border-secondary bg-background p-0 text-foreground shadow-2xl backdrop:bg-primary-dark/70 backdrop:backdrop-blur-[2px]"
     >
       <button onClick={close} aria-label="Cerrar" className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center bg-white/95 text-primary shadow transition-transform hover:rotate-90">
         <X aria-hidden />
       </button>
-      {f.hasImage && <img src={current.imageUrl!} alt={current.imageAlt || ''} className="max-h-72 w-full object-cover" />}
+      {f.hasImage && (
+        <img
+          src={current.imageUrl!}
+          alt={current.imageAlt || ''}
+          width={current.imageWidth ?? undefined}
+          height={current.imageHeight ?? undefined}
+          className={imgClass}
+        />
+      )}
       {hasText && (
         <div className={`space-y-5 p-8 ${f.hasImage ? '' : 'pt-16'}`}>
           {f.showTitle && <h2 id="popup-title" className="text-4xl text-primary">{current.title}</h2>}
@@ -116,7 +139,7 @@ export default function PopupManager({ popups }: { popups: PopupData[] }) {
           {f.hasVideo && <VideoEmbed url={current.videoUrl!} />}
           {f.hasCta && (
             <a href={current.ctaUrl!} onClick={close} className="btn btn-primary">
-              {current.ctaLabel?.trim() || 'Conocer más'}
+              {current.ctaLabel!.trim()}
             </a>
           )}
         </div>
