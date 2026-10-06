@@ -2,6 +2,7 @@ import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 import { RichText as ConvertRichText, LinkJSXConverter, type JSXConvertersFunction } from '@payloadcms/richtext-lexical/react'
 import Accordion from '@/components/Accordion'
 import FolderColors from '@/components/FolderColors'
+import RequirementTabs from '@/components/RequirementTabs'
 import VideoEmbed from '@/components/VideoEmbed'
 
 const buttonStyles: Record<string, string> = {
@@ -40,6 +41,7 @@ const converters: JSXConvertersFunction<any> = ({ defaultConverters }) => ({
     ),
     accordion: ({ node }: any) => <Accordion items={node.fields.items ?? []} />,
     folderColors: ({ node }: any) => <FolderColors items={node.fields.items ?? []} />,
+    requirementTabs: ({ node }: any) => <RequirementTabs groups={node.fields.groups ?? []} />,
     callout: ({ node }: any) => (
       <aside className={`border-l-2 bg-paper p-6 ${calloutStyles[node.fields.tone] ?? calloutStyles.info}`}>
         {node.fields.title && <p className="font-display text-2xl text-primary">{node.fields.title}</p>}

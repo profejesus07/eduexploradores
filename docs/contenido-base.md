@@ -24,15 +24,25 @@ Inicio · Nosotros · Servicios · Requisitos · FAQs · Contacto (+ Entradas/No
 - Destacados: pensamiento lógico y creatividad; horarios adaptados por edad; metodología centrada en el estudiante; campamentos de verano.
 
 ## Requisitos de matrícula
+**Estudiantes nuevos**
 1. Registro Civil de Nacimiento o PPT del estudiante (copia legible).
 2. Cédula de los padres o acudientes ampliada al 150 %.
 3. Carné de vacunación actualizado.
-4. Certificado de afiliación vigente al sistema de salud (la web dice "FOSYGA"; usar ADRES).
+4. Certificado de afiliación vigente al sistema de salud (ADRES).
 5. Carné de crecimiento y desarrollo (preescolar y primaria).
 6. Fotografía digital reciente, fondo blanco, 3x4 cm.
 7. Certificado médico de salud general.
 8. Informes psicopedagógicos o de apoyo profesional.
-9. Carpeta oficio plastificada (cartón) del color del grado: Párvulo azul · Pre-Jardín roja · Jardín amarilla · Transición verde.
+9. Carpeta oficio plastificada (cartón) del color del grado.
+
+**Estudiantes antiguos**
+1. Carné de vacunación actualizado.
+2. Certificado de afiliación vigente al sistema de salud (ADRES).
+3. Copia actualizada del carné de crecimiento y desarrollo.
+4. Fotografía digital reciente, fondo blanco, 3x4 cm.
+5. Carpeta oficio plastificada de cartón según el grado.
+
+Color de carpeta por grado: Párvulo azul · Pre-Jardín roja · Jardín amarilla · Transición verde.
 
 ## FAQs
 - **Enfoque**: constructivista; el estudiante en el centro; curiosidad, pensamiento crítico y exploración activa.

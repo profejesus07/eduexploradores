@@ -55,7 +55,27 @@ const pages = [
     metaDescription: 'Documentos necesarios para matricular a tu hijo en Exploradores del Saber.',
     content: doc(
       h('h2', 'Documentación requerida'),
-      list(['Copia legible del Registro Civil de Nacimiento o Permiso de Protección Temporal (PPT) del estudiante.', 'Copia ampliada al 150 % de la cédula de ciudadanía de los padres o acudientes.', 'Carné de vacunación actualizado.', 'Certificado de afiliación vigente al sistema de salud (ADRES).', 'Copia del carné de crecimiento y desarrollo (preescolar y primaria).', 'Fotografía digital reciente, fondo blanco, tamaño 3x4 cm.', 'Certificado médico de salud general del estudiante.', 'Informes psicopedagógicos o de apoyo profesional.', 'Carpeta tamaño oficio plastificada (de cartón), del color según el grado.'], true),
+      p('Padres, acudientes o representantes legales deben presentar la documentación completa y actualizada, según el tipo de estudiante.'),
+      block('requirementTabs', { groups: [
+        { label: 'Estudiantes nuevos', items: [
+          'Copia legible del Registro Civil de Nacimiento o Permiso de Protección Temporal (PPT) del estudiante.',
+          'Copia ampliada al 150 % de la cédula de ciudadanía de los padres o acudientes.',
+          'Carné de vacunación actualizado.',
+          'Certificado de afiliación vigente al sistema de salud (ADRES).',
+          'Copia del carné de crecimiento y desarrollo (preescolar y primaria).',
+          'Fotografía digital reciente, fondo blanco, tamaño 3x4 cm.',
+          'Certificado médico de salud general del estudiante.',
+          'Informes psicopedagógicos o de apoyo profesional.',
+          'Carpeta tamaño oficio plastificada (de cartón), del color según el grado.',
+        ].map((text) => ({ text })) },
+        { label: 'Estudiantes antiguos', items: [
+          'Carné de vacunación actualizado.',
+          'Certificado de afiliación vigente al sistema de salud (ADRES).',
+          'Copia actualizada del carné de crecimiento y desarrollo.',
+          'Fotografía digital reciente, fondo blanco, tamaño 3x4 cm.',
+          'Carpeta tamaño oficio plastificada, de cartón, según el grado.',
+        ].map((text) => ({ text })) },
+      ] }),
       h('h2', 'Color de la carpeta según el grado'),
       block('folderColors', { items: [
         { grade: 'Párvulo', folder: 'azul' }, { grade: 'Pre-Jardín', folder: 'roja' },

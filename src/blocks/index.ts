@@ -76,4 +76,30 @@ export const FolderColorsBlock: Block = {
   ],
 }
 
-export const blocks = [VideoBlock, ButtonBlock, CalloutBlock, AccordionBlock, FolderColorsBlock]
+export const RequirementTabsBlock: Block = {
+  slug: 'requirementTabs',
+  labels: { singular: 'Requisitos por tipo de estudiante (pestañas)', plural: 'Pestañas de requisitos' },
+  fields: [
+    {
+      name: 'groups',
+      label: 'Pestañas',
+      type: 'array',
+      minRows: 1,
+      maxRows: 4,
+      labels: { singular: 'Pestaña', plural: 'Pestañas' },
+      fields: [
+        { name: 'label', label: 'Nombre de la pestaña (ej. Estudiantes nuevos)', type: 'text', required: true },
+        {
+          name: 'items',
+          label: 'Documentos requeridos',
+          type: 'array',
+          minRows: 1,
+          labels: { singular: 'Documento', plural: 'Documentos' },
+          fields: [{ name: 'text', label: 'Documento', type: 'text', required: true }],
+        },
+      ],
+    },
+  ],
+}
+
+export const blocks = [VideoBlock, ButtonBlock, CalloutBlock, AccordionBlock, FolderColorsBlock, RequirementTabsBlock]
