@@ -137,11 +137,11 @@ if (!(await payload.count({ collection: 'levels' })).totalDocs) {
     { title: 'Jardín', badge: '03', subtitle: 'Bases para crecer', summary: 'Formación integral que fortalece las bases académicas y sociales, preparando a grandes ciudadanos.', highlights: hl('Pensamiento lógico y creatividad', 'Metodología centrada en el estudiante', 'Inglés con inmersión lúdica'), schedule: 'Lunes a viernes · 7:15 a.m. – 12:15 p.m.', folder: 'amarilla' },
     { title: 'Transición', badge: '04', subtitle: 'Hacia la primaria', summary: 'Consolidamos las bases académicas y sociales para dar el paso a la primaria con confianza y autonomía.', highlights: hl('Formación integral', 'Pensamiento crítico y autonomía', 'Inglés con inmersión lúdica'), schedule: 'Lunes a viernes · 7:15 a.m. – 12:15 p.m.', folder: 'verde' },
   ]
-  const prim = ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto'].map((title, i) => ({
-    title, badge: `${i + 1}°`, subtitle: 'Básica Primaria',
+  const prim = [{
+    title: 'Básica Primaria', badge: '1° – 5°', subtitle: 'Educación básica',
     summary: 'Aprendizaje activo con enfoque constructivista: curiosidad, pensamiento crítico y exploración, con acompañamiento en las áreas clave.',
     highlights: hl('Enfoque constructivista', 'Inglés con inmersión lúdica', 'Refuerzo en Matemáticas y Lenguaje'),
-  }))
+  }]
   let n = 0
   for (const l of pre) await payload.create({ collection: 'levels', data: { ...l, stage: 'preescolar', order: ++n, active: true } as any })
   for (const l of prim) await payload.create({ collection: 'levels', data: { ...l, stage: 'primaria', order: ++n, active: true } as any })

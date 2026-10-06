@@ -5,7 +5,7 @@ import { folderOptions } from '@/blocks'
 export const Levels: CollectionConfig = {
   slug: 'levels',
   labels: { singular: 'Nivel / grado', plural: 'Niveles y grados' },
-  admin: { useAsTitle: 'title', defaultColumns: ['title', 'stage', 'order', 'active'], description: 'Cada registro es una diapositiva de los sliders de Preescolar y Primaria.' },
+  admin: { useAsTitle: 'title', defaultColumns: ['title', 'stage', 'order', 'active'], description: 'Preescolar: cada registro es una diapositiva del slider. Primaria: un solo registro se muestra como banner (1° – 5°); si hay varios, se muestra un slider.' },
   defaultSort: 'order',
   access: {
     read: ({ req }) => (req.user ? true : { active: { equals: true } }),
@@ -26,7 +26,7 @@ export const Levels: CollectionConfig = {
     { name: 'order', label: 'Orden', type: 'number', defaultValue: 1, admin: { position: 'sidebar' } },
     { name: 'active', label: 'Mostrar en la web', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
     { name: 'title', label: 'Título (ej. Párvulos, Primero)', type: 'text', required: true },
-    { name: 'badge', label: 'Numeral o marca (ej. 01, 1°)', type: 'text', maxLength: 4 },
+    { name: 'badge', label: 'Numeral o marca (ej. 01, 1° – 5°)', type: 'text', maxLength: 8 },
     { name: 'subtitle', label: 'Antetítulo (ej. Primeros pasos)', type: 'text' },
     { name: 'summary', label: 'Descripción', type: 'textarea', required: true },
     {

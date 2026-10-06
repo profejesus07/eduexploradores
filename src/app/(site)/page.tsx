@@ -4,6 +4,7 @@ import Link from 'next/link'
 import logo from '@/assets/logo.webp'
 import LevelSlider, { type LevelSlide } from '@/components/LevelSlider'
 import PostCard from '@/components/PostCard'
+import PrimariaBanner from '@/components/PrimariaBanner'
 import Reveal from '@/components/Reveal'
 import { getPayloadClient } from '@/lib/payload'
 
@@ -114,7 +115,8 @@ export default async function HomePage() {
             <p className="mt-5 max-w-2xl text-xl text-muted-foreground">Programa completo para la primera infancia con enfoque lúdico y constructivista, acompañado de refuerzo escolar personalizado.</p>
           </Reveal>
           {preescolar.length > 0 && <LevelSlider kicker="Primera infancia" title="Preescolar" caption="Párvulos · Pre-Jardín · Jardín · Transición" slides={preescolar} badgeStyle="number" />}
-          {primaria.length > 0 && <LevelSlider kicker="Educación básica" title="Básica Primaria" caption="Grados 1° a 5°" slides={primaria} badgeStyle="grade" />}
+          {primaria.length === 1 && <PrimariaBanner data={primaria[0]} />}
+          {primaria.length > 1 && <LevelSlider kicker="Educación básica" title="Básica Primaria" caption="Grados 1° a 5°" slides={primaria} badgeStyle="grade" />}
           <Reveal className="mt-16 flex flex-col items-start gap-5 border border-border bg-card p-8 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="text-3xl text-primary">Refuerzo escolar</h3>
